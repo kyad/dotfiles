@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: main
+# key: main
+# --
+A = int(input())
+A, B = map(int, input().split())
+N, M = map(int, input().split())
+print()

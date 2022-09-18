@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: digits
+# key: digits
+# --
+// xをbase進数で見た時の桁数を返す
+int digits(long long x, int base) { int d = 0; while (x > 0) { x /= base; d++; } return d; }

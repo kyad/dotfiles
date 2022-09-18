@@ -1,0 +1,5 @@
+- hosts: localhost
+  connection: local
+  tasks:
+    - include: task.yaml
+    - include: emacs.yaml

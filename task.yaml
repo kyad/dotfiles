@@ -1,0 +1,39 @@
+- name: Install packages
+  package:
+    name:
+      - fonts-migmix
+      - git
+      - gitk
+      - samba
+      - tig
+      - tmux
+      - openssh-server
+      - psensor
+      - vim
+    state: latest
+  become: yes
+- name: Change Japanese directory name
+  shell:
+    cmd: LANG=C xdg-user-dirs-update
+    creates: "{{ ansible_env.HOME }}/Desktop"
+- name: Remove unused dirs
+  file:
+    state: absent
+    path:
+    -  "{{ ansible_env.HOME }}/Downloads"
+    -  "{{ ansible_env.HOME }}/Pictures"
+    -  "{{ ansible_env.HOME }}/Templates"
+    -  "{{ ansible_env.HOME }}/Documents"
+    -  "{{ ansible_env.HOME }}/Music"
+    -  "{{ ansible_env.HOME }}/Public"
+    -  "{{ ansible_env.HOME }}/Videos"
+- name: Make symbolic link for .gitignore
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/.gitconfig"
+    dest: "{{ ansible_env.HOME }}/.gitconfig"
+    state: link
+- name: Make symbolic link for .tmux.conf
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/.tmux.conf"
+    dest: "{{ ansible_env.HOME }}/.tmux.conf"
+    state: link

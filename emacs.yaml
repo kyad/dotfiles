@@ -1,0 +1,30 @@
+- name: Install packages
+  package:
+    name:
+      - aspell
+      - ddskk
+      - emacs
+    state: latest
+  become: yes
+- name: Disable XIM for emacs
+  shell:
+    cmd: "echo 'Emacs*useXIM: false' >> {{ ansible_env.HOME }}/.Xresources"
+    creates: "{{ ansible_env.HOME }}/.Xresources"
+- name: Generate .aspell.conf
+  shell:
+    cmd: "echo 'lang en_US' >> {{ ansible_env.HOME }}/.aspell.conf"
+    creates: "{{ ansible_env.HOME }}/.aspell.conf"
+- name: Make .emacs.d
+  file:
+    path: "{{ ansible_env.HOME }}/.emacs.d"
+    state: directory
+- name: Make symbolic link for .emacs.d/init.el
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/emacs/init.el"
+    dest: "{{ ansible_env.HOME }}/.emacs.d/init.el"
+    state: link
+- name: Make symbolic link for .emacs.d/mysnippets
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/emacs/mysnippets"
+    dest: "{{ ansible_env.HOME }}/.emacs.d/mysnippets"
+    state: link
