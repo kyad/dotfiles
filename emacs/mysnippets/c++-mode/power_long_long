@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: power_long_long
+# key: power_long_long
+# --
+// m^n, O(log n)
+long long power(long long m, long long n, int mod) {
+  long long a = m % mod;
+  long long ans = 1;
+  while (n > 0) {
+    if ((n & 1) == 1) {
+      ans *= a;
+      ans %= mod;
+    }
+    a *= a;
+    a %= mod;
+    n >>= 1;
+  }
+  return ans;
+}

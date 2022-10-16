@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: outprod
+# key: outprod
+# --
+template<class T> T outprod2(T ax, T ay, T bx, T by) {
+  return ax * by - ay * bx;
+}

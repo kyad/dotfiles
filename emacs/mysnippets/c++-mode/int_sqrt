@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# name: int_sqrt
+# key: int_sqrt
+# --
+// int(sqrt(n)) for n >= 0
+int int_sqrt(int n) {
+  if (n == 0) {
+    return 0;
+  }    
+  int left = 0;
+  int right = 200001;
+  while (right - left > 1) {
+    int mid = (left + right) / 2;
+    long long y = (long long)mid * mid - n;
+    if (y <= 0) {
+      left = mid;
+    } else {
+      right = mid;
+    }
+  }
+  return left;
+}

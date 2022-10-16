@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: ceildiv
+# key: ceildiv
+# --
+template<class T> T ceildiv(T a, T b) {
+  return (a + b - 1) / b;
+}
