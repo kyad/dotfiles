@@ -64,6 +64,13 @@
             (initial-scratch-message . "")
             (line-number-mode . t)))
 
+(leaf leaf
+  :config
+  (leaf leaf-convert
+    :ensure t)
+  (leaf use-package
+    :ensure t))
+
 (leaf paren
   :doc "highlight matching paren"
   :tag "builtin"
