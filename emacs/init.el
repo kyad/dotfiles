@@ -87,7 +87,9 @@
   :blackout t
   :leaf-defer nil
   :custom ((ivy-initial-inputs-alist . nil)
-           (ivy-use-selectable-prompt . t))
+           (ivy-use-selectable-prompt . t)
+           ;(ivy-sort-functions-alist . 'ivy-prescient-enable-sorting)
+           )
   :global-minor-mode t
   :config
   ;; C-sを標準の検索からswiperに置き換える  
@@ -97,7 +99,8 @@
     :url "https://github.com/abo-abo/swiper"
     :emacs>= 24.5
     :ensure t
-    :bind (("C-s" . swiper)))
+    ;:bind (("C-s" . swiper))
+    )
 
   (leaf counsel
     :doc "Various completion functions using Ivy"
@@ -130,7 +133,8 @@
   :url "https://github.com/raxod502/prescient.el"
   :emacs>= 25.1
   :ensure t
-  :custom ((prescient-aggressive-file-save . t))
+  :custom ((prescient-aggressive-file-save . t)
+           (prescient-filter-method . '(literal-prefix literal regexp initialism)))  ;; compと入力した時にrecompileよりもcompileを先にする
   :global-minor-mode prescient-persist-mode)
   
 (leaf ivy-prescient
