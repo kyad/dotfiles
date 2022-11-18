@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: union-find
-# key: union-find
+# name: UnionFind
+# key: UnionFind
 # --
 struct UnionFind {
   vector<int> parent, _size;

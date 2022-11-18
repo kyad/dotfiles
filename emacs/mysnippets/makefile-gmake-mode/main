@@ -1,16 +1,17 @@
 # -*- mode: snippet -*-
-# name: testcase
-# key: testcase
+# name: main
+# key: main
 # expand-env: ((yas-indent-line 'fixed))
 # --
 .PHONY: all
-all: a.out naive.out
+all: a.out
+#all: a.out naive.out
 
 a.out: a.cc
-	g++ -I \$(HOME)/ac-library \$< -Wall -g3
+	g++ -I \$(HOME)/ac-library \$< -o \$@ -Wall -g3
 
 naive.out: naive.cc
-	g++ -I \$(HOME)/ac-library \$< -Wall -g3
+	g++ -I \$(HOME)/ac-library \$< -o \$@ -Wall -g3
 
 .PHONY: clean
 clean:

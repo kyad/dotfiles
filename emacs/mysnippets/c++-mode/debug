@@ -2,6 +2,7 @@
 # name: debug
 # key: debug
 # --
+#if 1
 // debug
 #include <algorithm>
 #include <map>
@@ -22,8 +23,10 @@
 #define print8(a, b, c, d, e, f, g, h) print0(a, '\t'); print7(b, c, d, e, f, g, h);
 #define print_select(a, b, c, d, e, f, g, h, i, ...) i
 #define print(...) print_select(__VA_ARGS__, print8, print7, print6, print5, print4, print3, print2, print1)(__VA_ARGS__)
-template<class T> ostream& operator<<(ostream& os, const vector<T> &v) { int MOD = -1; size_t N = v.size(); os << '[';
-  for (size_t i = 0; i < N; i++) { os << v[i];
+template<class T> ostream& operator<<(ostream& os, const vector<T> &v) { int MOD = -1; int N = v.size(); os << '[';
+  for (int i = 0; i < N; i++) {
+    os << v[i];
+    //os << i << ':' << v[i];
     if (i == N - 1) { continue; }
     else if (MOD > 0 && i % MOD == (MOD - 1)) { os << '\n'; }
     else { os << ' '; }
@@ -51,3 +54,4 @@ template<class T> ostream& operator<<(ostream& os, const deque<T> &dq) {
   vector<T> v; for (auto it = dq.begin(); it != dq.end(); it++) { v.push_back(*it); } os << v; return os; }
 template<class T> ostream& operator<<(ostream& os, const stack<T> &s) {
   vector<T> v; stack<T> _s(s); while (!_s.empty()) { v.push_back(_s.top()); _s.pop(); } reverse(v.begin(), v.end()); os << v; return os; }
+#endif

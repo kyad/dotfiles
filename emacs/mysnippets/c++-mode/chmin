@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: chmin
+# key: chmin
+# --
+template<class T> void chmin(T& a, const T b) { a = min(a, b); }

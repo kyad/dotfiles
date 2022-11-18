@@ -2,6 +2,7 @@
 # name: main
 # key: main
 # --
+#include <cassert>
 #include <iostream>
 #include <vector>
 using namespace std;
