@@ -4,6 +4,7 @@
       - fonts-migmix
       - git
       - gitk
+      - input-remapper
       - samba
       - tig
       - tmux
@@ -12,6 +13,11 @@
       - vim
     state: latest
   become: yes
+- name: Install snap packages
+  snap:
+    name: code
+    channel: latest/stable
+    classic: yes
 - name: Change Japanese directory name
   shell:
     cmd: LANG=C xdg-user-dirs-update
