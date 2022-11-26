@@ -2,3 +2,5 @@
 	helper = store
 [core]
 	editor = vi
+[init]
+	defaultBranch = main
