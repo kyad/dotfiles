@@ -3,3 +3,4 @@
   tasks:
     - include: task.yaml
     - include: emacs.yaml
+    - include: atcoder.yaml
