@@ -1,0 +1,30 @@
+# -*- mode: snippet -*-
+# name: CC
+# key: CC
+# --
+// Coordinate compression
+// https://github.com/atcoder/live_library/blob/master/cc.cpp
+#include <algorithm>
+template<typename T=int> struct CC {
+  bool initialized;
+  vector<T> xs;
+  CC() : initialized(false) {}
+  void add(T x) { xs.push_back(x); }
+  void init() {  // O(Nlog(N))
+    sort(xs.begin(), xs.end());
+    xs.erase(unique(xs.begin(), xs.end()), xs.end());
+    initialized = true;
+  }
+  int operator()(T x) {  // 圧縮前の値から圧縮後の値を得る。O(logN)
+    if (!initialized) { init(); }
+    return upper_bound(xs.begin(), xs.end(), x) - xs.begin() - 1;
+  }
+  T operator[](int i) {  // 圧縮後の値から圧縮前の値を得る。O(1)
+    if (!initialized) { init(); }
+    return xs[i];
+  }
+  int size() {
+    if (!initialized) { init(); }
+    return xs.size();
+  }
+};
