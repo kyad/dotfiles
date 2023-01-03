@@ -1,0 +1,28 @@
+# -*- mode: snippet -*-
+# name: lazysegtree
+# key: lazysegtree
+# --
+#include <atcoder/lazysegtree>
+using namespace atcoder;
+
+// 区間加算・区間最小値
+using S = long long;
+using F = long long;
+const S INF = 4e18;
+S op_min(S a, S b){ return std::min(a, b); }
+S e_min(){ return INF; }
+S mapping(F f, S x){ return f+x; }
+F composition(F f, F g){ return f+g; }
+F id(){ return 0; }
+lazy_segtree<S, op_min, e_min, F, mapping, composition, id> seg_min(B);
+
+// 区間加算・区間最大値
+using S = long long;
+using F = long long;
+const S INF = 4e18;
+S op_max(S a, S b){ return std::max(a, b); }
+S e_max(){ return -INF; }
+S mapping(F f, S x){ return f+x; }
+F composition(F f, F g){ return f+g; }
+F id(){ return 0; }
+lazy_segtree<S, op_max, e_max, F, mapping, composition, id> seg_max(B);

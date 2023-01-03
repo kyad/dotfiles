@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: segtree
-# key: segtree
+# name: SegTree
+# key: SegTree
 # --
 #include <functional>
 
