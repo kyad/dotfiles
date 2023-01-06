@@ -4,6 +4,7 @@
 # --
 #if 1
 // debug
+#include <iostream>
 #include <algorithm>
 #include <map>
 #include <queue>
@@ -11,7 +12,9 @@
 #include <stack>
 #include <tuple>
 #include <vector>
+using namespace std;
 #define hr std::cout << "----------------" << std::endl;
+#define hr2 std::cout << "================" << std::endl;
 #define print0(a, c) std::cout << #a << '=' << a << c;
 #define print1(a) print0(a, '\n');
 #define print2(a, b) print0(a, '\t'); print1(b);
@@ -21,12 +24,14 @@
 #define print6(a, b, c, d, e, f) print0(a, '\t'); print5(b, c, d, e, f);
 #define print7(a, b, c, d, e, f, g) print0(a, '\t'); print6(b, c, d, e, f, g);
 #define print8(a, b, c, d, e, f, g, h) print0(a, '\t'); print7(b, c, d, e, f, g, h);
-#define print_select(a, b, c, d, e, f, g, h, i, ...) i
-#define print(...) print_select(__VA_ARGS__, print8, print7, print6, print5, print4, print3, print2, print1)(__VA_ARGS__)
+#define print9(a, b, c, d, e, f, g, h, i) print0(a, '\t'); print8(b, c, d, e, f, g, h, i);
+#define print10(a, b, c, d, e, f, g, h, i, j) print0(a, '\t'); print9(b, c, d, e, f, g, h, i, j);
+#define print_select(a, b, c, d, e, f, g, h, i, j, k, ...) k
+#define print(...) print_select(__VA_ARGS__, print10, print9, print8, print7, print6, print5, print4, print3, print2, print1)(__VA_ARGS__)
 template<class T> ostream& operator<<(ostream& os, const vector<T> &v) { int MOD = -1; int N = v.size(); os << '[';
   for (int i = 0; i < N; i++) {
     os << v[i];
-    //os << i << ':' << v[i];
+    //os << "["<< i << "]=" << v[i];
     if (i == N - 1) { continue; }
     else if (MOD > 0 && i % MOD == (MOD - 1)) { os << '\n'; }
     else { os << ' '; }
