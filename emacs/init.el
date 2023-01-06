@@ -296,6 +296,11 @@ document.addEventListener('DOMContentLoaded', () => {
 (leaf ein
   :ensure t)
 
+(leaf persistent-scratch
+  :ensure t
+  :config
+  (persistent-scratch-setup-default))
+
 (set-face-font 'default "migu 1m-12")
 (setq compile-command "g++ -g3 a.cc")
 
