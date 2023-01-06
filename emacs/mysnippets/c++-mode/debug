@@ -30,8 +30,9 @@ using namespace std;
 #define print(...) print_select(__VA_ARGS__, print10, print9, print8, print7, print6, print5, print4, print3, print2, print1)(__VA_ARGS__)
 template<class T> ostream& operator<<(ostream& os, const vector<T> &v) { int MOD = -1; int N = v.size(); os << '[';
   for (int i = 0; i < N; i++) {
+    //os << "["<< i << "]=";
     os << v[i];
-    //os << "["<< i << "]=" << v[i];
+    //if (abs(v[i]) == 4e18) { if (v[i] < 0) {os << '-'; } os << "inf"; } else { os << v[i]; }
     if (i == N - 1) { continue; }
     else if (MOD > 0 && i % MOD == (MOD - 1)) { os << '\n'; }
     else { os << ' '; }

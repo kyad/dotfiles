@@ -24,11 +24,15 @@ template<class X> struct SegTree {
   // 初期化 O(N) i: 0-indexed
   void set(int i, X x) { dat[i + n - 1] = x; }  // dat[n-1]~dat[2n-2]に値が入る
   void set1(int i, X x) { set(i - 1, x); }  // 1-indexed
-  void build() {
+  void build() {  // O(logN)
     for (int k = n - 2; k >= 0; k--) {
       dat[k] = fx(dat[2 * k + 1], dat[2 * k + 2]);
     }
   }
+
+  // 取得 O(N)
+  X get(int i) { return dat[i + n - 1]; }  // 0-indexed
+  X get1(int i) { return get(i - 1); }  // 1-indexed
 
   // 更新クエリ O(logN) i: 0-indexed
   void update(int i, X x) {
@@ -65,21 +69,29 @@ template<class X> ostream& operator<<(ostream& os, const SegTree<X> &segtree) {
     temp /= 2;
     depth++;
   }
-  for (int d = 0; d < depth; d++) {
+#if 0
+  int d0 = 0;  // Show all tree
+#else
+  int d0 = depth - 1;  // Show bottom
+#endif
+  for (int d = d0; d < depth; d++) {
     int left = (1<<d) - 1;
     int right = (1<<(d+1)) - 1;
     for (int i = left; i < right; i++) {
-      os << segtree.dat[i];
+      //os << "["<< (i - left) << "]=";
+      X val = segtree.dat[i];
+      os << val;
+      //if (abs(val) == 4e18) { if (val < 0) {os << '-'; } os << "inf"; } else { os << val; }
       os << (i == right - 1 ? '\n' : ' ');
     }
   }
   return os;
 }
 
-// RMQ (Range Minimum Query)
+// 1点更新・区間最小値
 // auto fx = [](int x1, int x2) -> int { return min(x1, x2); };
-// SegTree<int> rmq(n, fx, INF);
+// SegTree<int> seg(n, fx, INF);
 
-// Range Maximum Query
+// 1点更新・区間最大値
 // auto fx = [](int x1, int x2) -> int { return max(x1, x2); };
-// SegTree<int> rmq(n, fx, -INF);
+// SegTree<int> seg(n, fx, -INF);
