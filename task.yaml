@@ -4,7 +4,9 @@
       - fonts-migmix
       - git
       - gitk
+      - gnome-tweaks
       - input-remapper
+      - meld
       - samba
       - tig
       - tmux
