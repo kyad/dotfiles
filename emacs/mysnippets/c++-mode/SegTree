@@ -12,7 +12,9 @@ template<class X> struct SegTree {
   const X ex;  // 単位元
   vector<X> dat;  // dat[0]~dat[2*n-2]に値が入る
 
-  SegTree(int n_, FX fx_, X ex_): n(), fx(fx_), ex(ex_) {
+  void init(int n_, FX fx_, X ex_) {
+    fx = fx_;
+    ex = ex_;
     int x = 1;
     while (n_ > x) {
       x *= 2;
@@ -20,6 +22,8 @@ template<class X> struct SegTree {
     n = x;
     dat.resize(2 * n - 1, ex_);
   }
+  SegTree(): n(), fx(), ex() {}
+  SegTree(int n_, FX fx_, X ex_) { init(n_, fx_, ex_); }
 
   // 初期化 O(N) i: 0-indexed
   void set(int i, X x) { dat[i + n - 1] = x; }  // dat[n-1]~dat[2n-2]に値が入る
