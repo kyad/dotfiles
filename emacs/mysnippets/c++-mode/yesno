@@ -2,4 +2,4 @@
 # name: yesno
 # key: yesno
 # --
-cout << (ans ? "Yes" : "No") << endl;
+cout << (ans ? "Yes" : "No") << '\n';
