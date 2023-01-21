@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: bit
-# key: bit
+# name: BIT
+# key: BIT
 # --
 template<class T> struct binary_indexed_tree {
   int N;
