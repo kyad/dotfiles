@@ -34,10 +34,38 @@ template<class T> struct binary_indexed_tree {
     }
     return ret;
   }
+  // Returns a[l] + a[l + 1] + ... + a[r], O(logN)
+  T sum1(int l, int r) {
+    if (l == 1) {
+      return sum1(r);
+    } else {
+      return sum1(r) - sum1(l - 1);
+    }
+  }
   // Returns a[0] + a[1] + ... + a[k], O(logN)
   // k: 0-indexed
   T sum0(int k) {
     return sum1(k + 1);
+  }
+  // Returns a[0] + a[1] + ... + a[k - 1], O(logN)
+  // 半開区間の場合は[0, k)が空集合(k==0)の場合にも使え、0を返す。
+  T sum0_open(int k) {
+    if (k == 0) {
+      return 0;
+    }
+    return sum1(k);
+  }
+  // Returns a[l] + a[l + 1] + ... + a[r], O(logN)
+  T sum0(int l, int r) {
+    return sum1(l + 1, r + 1);
+  }
+  // Returns a[l] + a[l + 1] + ... + a[r - 1], O(logN)
+  // 半開区間の場合は[l, r)が空集合(l==r)の場合にも使え、0を返す。
+  T sum0_open(int l, int r) {
+    if (l == r) {
+      return 0;
+    }
+    return sum1(l + 1, r + 1 - 1);
   }
   // Returns minimum x such that a[1] + a[2] + ... + a[x] >= w, O(logN)
   // return: 1-indexed (0: not found)
