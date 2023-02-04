@@ -13,6 +13,7 @@
       - openssh-server
       - psensor
       - vim
+      - whois
     state: latest
   become: yes
 - name: Install vscode
