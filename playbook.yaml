@@ -1,6 +1,9 @@
 - hosts: localhost
   connection: local
+  vars:
+    user_name: kyad
   tasks:
     - include: task.yaml
+    - include: docker.yaml
     - include: emacs.yaml
     - include: atcoder.yaml

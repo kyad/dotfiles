@@ -1,0 +1,10 @@
+- name: Install packages
+  ansible.builtin.apt:
+    pkg:
+      - docker.io
+      - docker-compose
+- name: Add group
+  ansible.builtin.user:
+    name: "{{ user_name }}"
+    groups: [docker]
+    append: yes

@@ -15,9 +15,14 @@
       - vim
     state: latest
   become: yes
-- name: Install snap packages
+- name: Install vscode
   snap:
     name: code
+    channel: latest/stable
+    classic: yes
+- name: Install alacritty
+  snap:
+    name: alacritty
     channel: latest/stable
     classic: yes
 - name: Change Japanese directory name
