@@ -276,11 +276,6 @@ document.addEventListener('DOMContentLoaded', () => {
 (leaf magit
   :ensure t)
 
-(leaf tab-bar-mode
-  :doc "C-x t 2: New tab"
-  :config
-  (tab-bar-mode +1))
-
 ;; M-x all-the-icons-install-fonts
 (leaf all-the-icons
   :if (display-graphic-p)
@@ -302,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (persistent-scratch-setup-default))
 
 (set-face-font 'default "migu 1m-12")
-(setq compile-command "g++ -g3 a.cc")
+(setq compile-command "g++ -g3 -I ${HOME}/ac-library -Wall a.cc")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
