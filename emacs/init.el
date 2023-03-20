@@ -157,43 +157,6 @@
          ("M-p" . flycheck-previous-error))
   :global-minor-mode global-flycheck-mode)
 
-(leaf company
-  :doc "Modular text completion framework"
-  :req "emacs-24.3"
-  :url "http://company-mode.github.io/"
-  :emacs>= 24.3
-  :ensure t
-  :blackout t
-  :leaf-defer nil
-  :bind ((company-active-map
-          ("M-n" . nil)
-          ("M-p" . nil)
-          ("C-h" . nil)  ;; Use C-h for delete-backward-char
-          ("C-s" . company-filter-candidates)
-          ("C-n" . company-select-next)
-          ("C-p" . company-select-previous)
-          ("<tab>" . company-complete-selection)))
-         (company-search-map
-          ("C-n" . company-select-next)
-          ("C-p" . company-select-previous))
-  :custom ((company-idle-delay . 0)
-           (company-minimum-prefix-length . 1)
-           (company-selection-default . nil)  ;; 無選択状態から初める
-           (company-selection . nil)  ;; 無選択状態から初める
-           ;(company-transformers . '(company-sort-by-occurrence))  ;; ランク付け
-           )
-  :global-minor-mode global-company-mode)
-
-(leaf company-c-headers
-  :doc "Company mode backend for C/C++ header files"
-  :req "emacs-24.1" "company-0.8"
-  :emacs>= 24.1
-  :ensure t
-  :after company
-  :defvar company-backends
-  :config
-  (add-to-list 'company-backends 'company-c-headers))
-
 (leaf yasnippet
   :ensure t
   :init (yas-global-mode 1)
