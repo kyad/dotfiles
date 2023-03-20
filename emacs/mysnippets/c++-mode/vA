@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: vA
-# key: vA
-# --
-vector<int> A(N);
-for (int n = 0; n < N; n++) {
-  cin >> A.at(n);
-}
