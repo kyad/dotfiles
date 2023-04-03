@@ -1,10 +1,10 @@
 # -*- mode: snippet -*-
-# name: power_int
-# key: power_int
+# name: power
+# key: power
 # --
 // m^n, O(log n)
-int power(int m, int n, int mod) {
-  long long a = m;
+long long power(long long m, long long n, int mod) {
+  long long a = m % mod;
   long long ans = 1;
   while (n > 0) {
     if ((n & 1) == 1) {
