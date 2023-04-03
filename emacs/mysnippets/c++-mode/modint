@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: modint
+# key: modint
+# --
+// modint
+#include <atcoder/modint>
+using namespace atcoder;
+using mint = modint998244353;
+ostream& operator<<(ostream& os, const mint &v) {
+  os << v.val();
+  return os;
+}
