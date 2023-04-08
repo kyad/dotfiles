@@ -92,16 +92,6 @@
            )
   :global-minor-mode t
   :config
-  ;; C-sを標準の検索からswiperに置き換える  
-  (leaf swiper
-    :doc "Isearch with an overview. Oh, man!"
-    :req "emacs-24.5" "ivy-0.13.0"
-    :url "https://github.com/abo-abo/swiper"
-    :emacs>= 24.5
-    :ensure t
-    ;:bind (("C-s" . swiper))
-    )
-
   (leaf counsel
     :doc "Various completion functions using Ivy"
     :req "emacs-24.5" "swiper-0.13.0"
