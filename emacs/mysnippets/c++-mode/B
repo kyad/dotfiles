@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: B
+# key: B
+# --
+vector<int> B(N);
+for (int n = 0; n < N; n++) {
+  cin >> B.at(n);
+}
