@@ -4,8 +4,9 @@
 # --
 struct UnionFind {
   vector<int> parent, _size;
+  int _num_unions;
 
-  UnionFind(int n) : parent(n, -1), _size(n, 1) {}
+  UnionFind(int n) : parent(n, -1), _size(n, 1), _num_unions(n) {}
 
   int root(int x) {
     if (parent[x] == -1) {
@@ -31,10 +32,15 @@ struct UnionFind {
     }
     parent[y] = x;
     _size[x] += _size[y];
+    _num_unions--;
     return true;
   }
 
   int size(int x) {
     return _size[root(x)];
+  }
+
+  int num_unions() {  // unionの数(ひとまとまりになっているグループの数)を返す
+    return _num_unions;
   }
 };
