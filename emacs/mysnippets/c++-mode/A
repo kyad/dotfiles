@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: vec
-# key: vec
+# name: A
+# key: A
 # --
 vector<int> A(N);
 for (int n = 0; n < N; n++) {
