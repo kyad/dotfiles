@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: scc
+# key: scc
+# --
+#include <atcoder/scc>
+using namespace atcoder;
