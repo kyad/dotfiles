@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: Q
+# key: Q
+# --
+int Q;
+cin >> Q;
+for (int _q = 0; _q < Q; _q++) {
+}
