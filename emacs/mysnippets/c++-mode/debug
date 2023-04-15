@@ -13,9 +13,9 @@
 #include <tuple>
 #include <vector>
 using namespace std;
-#define hr std::cout << "----------------" << std::endl;
-#define hr2 std::cout << "================" << std::endl;
-#define print0(a, c) std::cout << #a << '=' << a << c;
+#define hr std::cerr << "----------------" << std::endl;
+#define hr2 std::cerr << "================" << std::endl;
+#define print0(a, c) std::cerr << #a << '=' << a << c;
 #define print1(a) print0(a, '\n');
 #define print2(a, b) print0(a, '\t'); print1(b);
 #define print3(a, b, c) print0(a, '\t'); print2(b, c);
