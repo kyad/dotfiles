@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: graph
+# key: graph
+# --
+int N, M;
+cin >> N >> M;
+vector<vector<int> > graph(N);
+for (int m = 0; m < M; m++) {
+  int U, V;
+  cin >> U >> V;
+  U--; V--;
+  graph[U].push_back(V);
+  //graph[V].push_back(U);
+}
