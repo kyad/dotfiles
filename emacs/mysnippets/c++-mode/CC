@@ -4,6 +4,7 @@
 # --
 // Coordinate compression
 // https://github.com/atcoder/live_library/blob/master/cc.cpp
+// 圧縮後の値は0からN-1 (Nはsize())
 #include <algorithm>
 template<typename T=int> struct CC {
   bool initialized;
