@@ -4,5 +4,5 @@
 # --
 int Q;
 cin >> Q;
-for (int _q = 0; _q < Q; _q++) {
+for (int qi = 0; qi < Q; qi++) {
 }

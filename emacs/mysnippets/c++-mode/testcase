@@ -1,0 +1,21 @@
+# -*- mode: snippet -*-
+# name: testcase
+# key: testcase
+# --
+#include <algorithm>
+#include <cassert>
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void testcase() {
+}
+
+int main() {
+  int T;
+  cin >> T;
+  for (int ti = 0; ti < T; ti++) {
+    testcase();
+  }
+  return 0;
+}
