@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: dumpvec
+# key: dumpvec
+# --
+// vectorを1行で表示する
+template<class T> void dumpvec(const vector<T>& A) {
+  int N = A.size();
+  for (int n = 0; n < N; n++) {
+    cout << A.at(n) << " \n"[n + 1 == N];
+  }
+}
