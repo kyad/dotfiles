@@ -9,7 +9,7 @@ template<class X> struct SegTree {
   using FX = function<X(X, X)>;
   int n;  // n_以上の最小の2べき
   FX fx;  // 二項演算 X x X -> X
-  const X ex;  // 単位元
+  X ex;  // 単位元
   vector<X> dat;  // dat[0]~dat[2*n-2]に値が入る
 
   void init(int n_, FX fx_, X ex_) {
