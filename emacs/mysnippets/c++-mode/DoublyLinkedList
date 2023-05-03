@@ -1,0 +1,41 @@
+# -*- mode: snippet -*-
+# name: DoublyLinkedList
+# key: DoublyLinkedList
+# --
+// 双方向リスト
+struct DoublyLinkedList {
+  int N;
+  vector<int> next;  // 次。-1は次が無い
+  vector<int> prev;  // 前。-1は前が無い
+  // コンストラクタ。Nは要素数
+  DoublyLinkedList(int _N): N(_N) {
+    next.resize(N, -1);
+    prev.resize(N, -1);
+  }
+  // aの後ろにbを結合する。0-indexed. O(1)
+  void connect(int a, int b) {
+    assert(0 <= a && a < N);
+    assert(0 <= b && b < N);
+    assert(next.at(a) == -1);
+    next.at(a) = b;
+    assert(prev.at(b) == -1);
+    prev.at(b) = a;
+  }
+  // aとbを分離する。0-indexed. O(1)
+  void separate(int a, int b) {
+    assert(0 <= a && a < N);
+    assert(0 <= b && b < N);
+    assert(next.at(a) == b);
+    next.at(a) = -1;
+    assert(prev.at(b) == a);
+    prev.at(b) = -1;
+  }
+  // aを含む連結成分の先頭番号を返す。0-indexed. O(N)
+  int top(int a) {
+    assert(0 <= a && a < N);
+    while (prev.at(a) != -1) {
+      a = prev.at(a);
+    }
+    return a;
+  }
+};
