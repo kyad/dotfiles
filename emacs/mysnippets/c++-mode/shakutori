@@ -1,0 +1,40 @@
+# -*- mode: snippet -*-
+# name: shakutori
+# key: shakutori
+# --
+// 尺取り法。[left, right)は半開区間とする
+int right = 0;
+for (int left = 0; left < N; left++) {
+  // 条件を満たす最大のrightを求める
+  while (true) {
+    int nright = right + 1;
+    if (nright >= N + 1) {
+      break;
+    }
+    // nrightが条件を満たしているかチェック
+    // 例：
+    // int nsum = sum + (T[right] == 'x');
+    // if (nsum > K) {
+    //   break;
+    // }
+    right = nright;
+    // 条件にrightを含める
+    // 例：
+    // sum = nsum;
+  }
+
+  // この時点で[left, right)は条件を見たす最大の区間
+  // 何かする。
+  // 例：
+  // ans = max(ans, right - left);
+
+  // leftをインクリメントする前の処理
+  if (left == right) {
+    // このとき、[left, right)は空集合なので、条件からleftを除外する処理は不要
+    right++;  // 先にrightをインクリメントする
+  } else {
+    // 条件からleftを除外する
+    // 例：
+    // sum -= (T[left] == 'x');
+  }
+}
