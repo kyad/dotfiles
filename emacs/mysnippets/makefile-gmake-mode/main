@@ -18,7 +18,7 @@ clean:
 	rm -f a.out naive.out
 
 .PHONY: gen-test
-gen-test:
+gen-test: naive.out
 	rm -f test/random-*
 	oj g/i 'python gen.py'
 	oj g/o -c ./naive.out
