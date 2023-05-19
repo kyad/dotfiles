@@ -5,4 +5,11 @@
 int Q;
 cin >> Q;
 for (int qi = 0; qi < Q; qi++) {
+  int type;
+  cin >> type;
+  if (type == 1) {
+    $0
+  } else if (type == 2) {
+  } else {
+  }
 }
