@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: dfs
+# key: dfs
+# --
+vector<bool> seen(N, false);  // 探索完了フラグ
+auto dfs = [&](auto dfs, int u) -> void {
+  seen.at(u) = true;  // 訪問済(訪問完了)
+  // if () {
+  //   return;
+  // }
+  for (int v : graph.at(u)) {
+    if (seen.at(v)) {
+      continue;
+    }
+    dfs(dfs, v);
+  }
+};
