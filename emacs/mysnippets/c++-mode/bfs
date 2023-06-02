@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# name: bfs
+# key: bfs
+# --
+// BFS
+int s = 0;  // 探索開始ノード
+queue<int> todo;
+vector<int> dist(N, -1);
+dist.at(s) = 0;
+todo.push(s);
+while (!todo.empty()) {
+  int u = todo.front();
+  todo.pop();
+  for (int v : graph.at(u)) {
+    if (dist.at(v) < 0) {
+      dist.at(v) = dist.at(v) + 1;
+      todo.push(v);
+    }
+    // if (dist.at(v) == dist.at(u) + 1) {  // 前に、uと同じ距離のノードからvに訪れていた場合の処理
+    // }
+  }
+}
