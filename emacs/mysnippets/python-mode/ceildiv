@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: ceildiv
+# key: ceildiv
+# --
+def ceildiv(a, b):
+    return (a + b - 1) // b

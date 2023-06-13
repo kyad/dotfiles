@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: bisect
+# key: bisect
+# --
+left = $0
+right = 
+while right - left > 1:
+    mid = (left + right) // 2
