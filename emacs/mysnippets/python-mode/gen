@@ -15,6 +15,10 @@ import random
 # l = ''.join([chr(ord('a') + i) for i in range(26)])  # アルファベット全て
 # S = ''.join(random.choices(alphabet, k=len))  # ランダムな文字列
 
+## [1, ..., N]のランダムな順列
+# A = list(range(1, N + 1))  # 1, 2, .., N
+# random.shuffle(A)  # Aをシャッフルする
+
 # A = [0] * N
 # for n in range(N):
 #     A[n] = random.randint(1, 10)  # a<=N<=b のNを返す
