@@ -1,0 +1,27 @@
+# -*- mode: snippet -*-
+# name: divisors
+# key: divisors
+# --
+/**
+ * 2からNまでの非自明な約数のリストを返す。
+ * 非自明な約数とは、1とNは含まないものとする。
+ * 計算量：O(NlogN)
+ * 答のサイズ：大雑把にはO(NlogN)。一つひとつはそれ以上の最小の高度合成数の約数の個数で見積る
+ * \param N Input.
+ * \param include1 trueにすると答に1を含める。
+ * \return Answer. ans[M]にはM(1<=M<=N)の約数のリストが入っている。
+ */
+vector<vector<int> > divisors(int N, bool include1 = false) {
+  vector<vector<int> > ans(N + 1);
+  if (include1) {
+    for (int n = 1; n <= N; n++) {
+      ans.at(n).push_back(1);
+    }
+  }
+  for (int p = 2; p <= N / 2; p++) {
+    for (int n = p; n <= N; n += p) {
+      ans.at(n).push_back(p);
+    }
+  }
+  return ans;
+}
