@@ -74,6 +74,9 @@ template<class T> struct binary_indexed_tree {
     }
     return sum1(l + 1, r + 1 - 1);
   }
+  // Returns a[k]
+  T get1(int k) { return (k == 1) ? sum1(k) : (sum1(k) - sum1(k - 1)); }
+  T get0(int k) { return get1(k + 1); }
   // Returns minimum x such that a[1] + a[2] + ... + a[x] >= w, O(logN)
   // return: 1-indexed (0: not found)
   T lower_bound1(T w) {
