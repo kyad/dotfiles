@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: sgn
+# key: sgn
+# --
+/// Return sgn(x) (odd: -1, even: 1)
+template<typename T> T sgn(T x) { return (x % 2 == 0) ? 1 : -1; }
