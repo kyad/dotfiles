@@ -23,7 +23,7 @@ template<class T> struct binary_indexed_tree {
   void add0(int k, T x) { add1(k + 1, x); }
   // Returns a[1] + a[2] + ... + a[k], O(logN)
   // k: 1-indexed
-  T sum1(int k) {
+  T sum1(int k) const {
     T ret = 0;
     for (; k > 0; k -= (k & -k)) {
       ret += bit[k];
@@ -31,14 +31,14 @@ template<class T> struct binary_indexed_tree {
     return ret;
   }
   // Returns a[l] + a[l + 1] + ... + a[r], O(logN)
-  T sum1(int l, int r) {
+  T sum1(int l, int r) const {
     if (l == 1) {
       return sum1(r);
     } else {
       return sum1(r) - sum1(l - 1);
     }
   }
-  T sum1_open(int l, int r) {
+  T sum1_open(int l, int r) const {
     if (l == r) {
       return 0;
     } else {
@@ -47,28 +47,28 @@ template<class T> struct binary_indexed_tree {
   }
   // Returns a[0] + a[1] + ... + a[k], O(logN)
   // k: 0-indexed
-  T sum0(int k) { return sum1(k + 1); }
+  T sum0(int k) const { return sum1(k + 1); }
   // Returns a[0] + a[1] + ... + a[k - 1], O(logN)
   // 半開区間の場合は[0, k)が空集合(k==0)の場合にも使え、0を返す。
-  T sum0_open(int k) {
+  T sum0_open(int k) const {
     if (k == 0) {
       return 0;
     }
     return sum1(k);
   }
   // Returns a[l] + a[l + 1] + ... + a[r], O(logN)
-  T sum0(int l, int r) { return sum1(l + 1, r + 1); }
+  T sum0(int l, int r) const { return sum1(l + 1, r + 1); }
   // Returns a[l] + a[l + 1] + ... + a[r - 1], O(logN)
   // 半開区間の場合は[l, r)が空集合(l==r)の場合にも使え、0を返す。
-  T sum0_open(int l, int r) {
+  T sum0_open(int l, int r) const {
     if (l == r) {
       return 0;
     }
     return sum1(l + 1, r + 1 - 1);
   }
   // Returns a[k]
-  T get1(int k) { return (k == 1) ? sum1(k) : (sum1(k) - sum1(k - 1)); }
-  T get0(int k) { return get1(k + 1); }
+  T get1(int k) const { return (k == 1) ? sum1(k) : (sum1(k) - sum1(k - 1)); }
+  T get0(int k) const { return get1(k + 1); }
   // Returns minimum x such that a[1] + a[2] + ... + a[x] >= w, O(logN)
   // return: 1-indexed (0: not found)
   T lower_bound1(T w) {
@@ -92,6 +92,23 @@ template<class T> struct binary_indexed_tree {
   // return: 0-indexed (-1: not found)
   T lower_bound0(T w) { return lower_bound1(w) - 1; }
 };
+
+template<class X> ostream& operator<<(ostream& os, const binary_indexed_tree<X> &bit) {
+  int N = bit.N;
+  vector<X> v(N);
+  for (int n = 0; n < N; n++) { v.at(n) = bit.get0(n); }
+  os << '[';
+  for (int i = 0; i < N; i++) {
+    //os << '['<< i << ']=';
+    os << v[i];
+    const int MOD = -1;
+    if (i == N - 1) { continue; }
+    else if (MOD > 0 && i % MOD == (MOD - 1)) { os << '\n'; }
+    else { os << ' '; }
+  }
+  os << ']';
+  return os;
+}
 
 // BITの区間加算・1点取得はimos法の値をbitで管理する。
 // binary_indexed_tree<long long> bit(N + 1);
