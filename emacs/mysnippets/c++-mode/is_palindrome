@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: is_palindrome
+# key: is_palindrome
+# --
+bool is_palindrome(string S) {
+  int N = S.size();
+  for (int l = 0; l < N / 2; l++) {
+    int r = N - 1 - l;
+    if (S.at(l) != S.at(r)) {
+      return false;
+    }
+  }
+  return true;
+}
