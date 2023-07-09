@@ -1,8 +1,8 @@
 # -*- mode: snippet -*-
-# name: sgn
-# key: sgn
+# name: sign
+# key: sign
 # --
-/// Return sgn(x). If x == 0, then return 0.
-template<typename T> T sgn(T x) {
+/// Return sign(x). If x == 0, then return 0.
+template<typename T> T sign(T x) {
   return x > 0 ? 1 : x < 0 ? -1 : 0;
 }
