@@ -61,3 +61,4 @@ template<class T> ostream& operator<<(ostream& os, const deque<T> &dq) {
 template<class T> ostream& operator<<(ostream& os, const stack<T> &s) {
   vector<T> v; stack<T> _s(s); while (!_s.empty()) { v.push_back(_s.top()); _s.pop(); } reverse(v.begin(), v.end()); os << v; return os; }
 #endif
+// --------
