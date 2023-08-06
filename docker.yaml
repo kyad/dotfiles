@@ -3,8 +3,10 @@
     pkg:
       - docker.io
       - docker-compose
+  become: yes
 - name: Add group
   ansible.builtin.user:
     name: "{{ user_name }}"
     groups: [docker]
     append: yes
+  become: yes
