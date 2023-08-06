@@ -122,3 +122,8 @@
       - gcc
     state: latest
   become: yes
+- name: nadesiko3
+  shell:
+    cmd: npm install -g nadesiko3
+    creates: /usr/local/bin/cnako3
+  become: yes
