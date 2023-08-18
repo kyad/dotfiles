@@ -16,19 +16,9 @@
       - whois
     state: latest
   become: yes
-- name: Install vscode
-  snap:
-    name: code
-    channel: latest/stable
-    classic: yes
-- name: Install alacritty
-  snap:
-    name: alacritty
-    channel: latest/stable
-    classic: yes
 - name: Change Japanese directory name
   shell:
-    cmd: LANG=C xdg-user-dirs-update
+    cmd: LANG=C xdg-user-dirs-update --force
     creates: "{{ ansible_env.HOME }}/Desktop"
 - name: Remove unused dirs
   file:
