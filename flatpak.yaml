@@ -1,0 +1,30 @@
+- name: Add flatpak repository
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: user
+
+- name: Install Edge by flatpak
+  community.general.flatpak:
+    name: com.microsoft.Edge
+    state: present
+    method: user
+
+- name: Install VSCode by flatpak
+  community.general.flatpak:
+    name: com.visualstudio.code
+    state: present
+    method: user
+
+- name: Install Discord by flatpak
+  community.general.flatpak:
+    name: com.discordapp.Discord
+    state: present
+    method: user
+
+- name: Install Zoom by flatpak
+  community.general.flatpak:
+    name: us.zoom.Zoom
+    state: present
+    method: user
