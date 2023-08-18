@@ -41,6 +41,11 @@
     -  "{{ ansible_env.HOME }}/Music"
     -  "{{ ansible_env.HOME }}/Public"
     -  "{{ ansible_env.HOME }}/Videos"
+- name: Make symbolic link for .aspell.conf
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/.aspell.conf"
+    dest: "{{ ansible_env.HOME }}/.aspell.conf"
+    state: link
 - name: Make symbolic link for .gitignore
   file:
     src: "{{ ansible_env.HOME }}/dotfiles/.gitconfig"
