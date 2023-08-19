@@ -249,7 +249,10 @@ document.addEventListener('DOMContentLoaded', () => {
   :config
   (persistent-scratch-setup-default))
 
-(set-face-font 'default "migu 1m-12")
+(if (boundp 'window-system)
+    (if (>= (x-display-pixel-height) 1440)
+        (set-face-font 'default "migu 1m-12")  ;; >=WQHD
+        (set-face-font 'default "migu 1m-10")))  ;; <=FHD
 (setq compile-command "g++ -g3 -O0 -I ${HOME}/ac-library -Wall a.cc")
 
 (custom-set-variables
