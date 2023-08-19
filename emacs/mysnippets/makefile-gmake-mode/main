@@ -4,21 +4,25 @@
 # expand-env: ((yas-indent-line 'fixed))
 # --
 .PHONY: all
-all: a.out
-#all: a.out naive.out
 
-a.out: a.cc
-	g++ -I \$(HOME)/ac-library \$< -o \$@ -Wall -g3
+# テストケース生成用のリファレンス
+REFERENCE=naive
+#REFERENCE=tle
+#REFERENCE=ac
 
-naive.out: naive.cc
-	g++ -I \$(HOME)/ac-library \$< -o \$@ -Wall -g3
+#all: a.out
+all: a.out $(REFERENCE).out
+
+.SUFFIXES: .out .cc
+.cc.out:
+	g++ -g3 -O0 -I ${HOME}/ac-library -Wall $< -o $@
 
 .PHONY: clean
 clean:
-	rm -f a.out naive.out
+	rm -f a.out $(REFERENCE).out
 
 .PHONY: gen-test
-gen-test: naive.out
+gen-test: $(REFERENCE).out
 	rm -f test/random-*
 	oj g/i 'python gen.py'
-	oj g/o -c ./naive.out
+	oj g/o -c ./$(REFERENCE).out
