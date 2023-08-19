@@ -5,6 +5,8 @@
 import random
 
 # N = random.randint(a, b)  # a<=N<=b のNを返す
+# H = random.randint(a, b)  # a<=N<=b のHを返す
+# W = random.randint(a, b)  # a<=N<=b のWを返す
 # l = list(range(1, N + 1))  # 1, 2, .., N
 # l = [chr(ord('a') + i) for i in range(5)]  # a, b, c, d, e
 # A = random.sample(l, k=k)  # 配列から重複を許さずにk個取る
