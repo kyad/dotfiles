@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: comb2
+# key: comb2
+# --
+long long comb2(long long N) { return N * (N - 1) / 2; }
