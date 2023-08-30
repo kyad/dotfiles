@@ -62,7 +62,7 @@
       eval "$(pyenv virtualenv-init -)"
       pyenv install pypy3.6-7.3.0
       pyenv virtualenv pypy3.6-7.3.0 pypy3.6-7.3.0-atcoder
-      cd ~/atcoder && pyenv local pypy3.6-7.3.0-atcoder
+      cd ~/atcoder && pyenv local pypy3.6-7.3.0-atcoder && pip install -U pip
     creates: "{{ ansible_env.HOME }}/.pyenv/versions/pypy3.6-7.3.0-atcoder"
 - name: PyPy3 online-judge-tools dependency
   package:
@@ -79,7 +79,7 @@
       eval "$(pyenv init --path)"
       eval "$(pyenv init -)"
       eval "$(pyenv virtualenv-init -)"
-      cd ~/atcoder && pyenv local pypy3.6-7.3.0-atcoder && pip3 install online-judge-tools
+      cd ~/atcoder && pyenv local pypy3.6-7.3.0-atcoder && pip3 install -U pip && pip3 install online-judge-tools
     creates: "{{ ansible_env.HOME }}/.pyenv/versions/pypy3.6-7.3.0/envs/pypy3.6-7.3.0-atcoder/site-packages/onlinejudge"
 - name: Python3
   shell:
