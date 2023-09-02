@@ -32,6 +32,12 @@
   shell:
     cmd: git clone https://github.com/kyad/aoj.git ~/aoj
     creates: "{{ ansible_env.HOME }}/aoj"
+- name: ac-library
+  shell:
+    cmd: |
+      git clone https://github.com/atcoder/ac-library ~/ac-library
+      cd ~/ac-library && git checkout v1.4
+    creates: "{{ ansible_env.HOME }}/ac-library"
 - name: pyenv
   shell:
     cmd: |
@@ -60,10 +66,10 @@
       eval "$(pyenv init --path)"
       eval "$(pyenv init -)"
       eval "$(pyenv virtualenv-init -)"
-      pyenv install pypy3.6-7.3.0
-      pyenv virtualenv pypy3.6-7.3.0 pypy3.6-7.3.0-atcoder
-      cd ~/atcoder && pyenv local pypy3.6-7.3.0-atcoder && pip install -U pip
-    creates: "{{ ansible_env.HOME }}/.pyenv/versions/pypy3.6-7.3.0-atcoder"
+      pyenv install pypy3.10-7.3.12
+      pyenv virtualenv pypy3.10-7.3.12 pypy3.10-7.3.12-atcoder
+      cd ~/atcoder && pyenv local pypy3.10-7.3.12-atcoder && pip install -U pip
+    creates: "{{ ansible_env.HOME }}/.pyenv/versions/pypy3.10-7.3.12-atcoder"
 - name: PyPy3 online-judge-tools dependency
   package:
     name:
@@ -79,8 +85,8 @@
       eval "$(pyenv init --path)"
       eval "$(pyenv init -)"
       eval "$(pyenv virtualenv-init -)"
-      cd ~/atcoder && pyenv local pypy3.6-7.3.0-atcoder && pip3 install -U pip && pip3 install online-judge-tools
-    creates: "{{ ansible_env.HOME }}/.pyenv/versions/pypy3.6-7.3.0/envs/pypy3.6-7.3.0-atcoder/site-packages/onlinejudge"
+      cd ~/atcoder && pyenv local pypy3.10-7.3.12-atcoder && pip3 install -U pip && pip3 install online-judge-tools
+    creates: "{{ ansible_env.HOME }}/.pyenv/versions/pypy3.10-7.3.12/envs/pypy3.10-7.3.12-atcoder/site-packages/onlinejudge"
 - name: Python3
   shell:
     cmd: |
@@ -89,10 +95,10 @@
       eval "$(pyenv init --path)"
       eval "$(pyenv init -)"
       eval "$(pyenv virtualenv-init -)"
-      pyenv install 3.8.2
-      pyenv virtualenv 3.8.2 3.8.2-atcoder
-      cd ~/atcoder && pyenv local 3.8.2-atcoder && pip install -r ~/algorithm/requirements.txt
-    creates: "{{ ansible_env.HOME }}/.pyenv/versions/3.8.2-atcoder"
+      pyenv install 3.11.4
+      pyenv virtualenv 3.11.4 3.11.4-atcoder
+      cd ~/atcoder && pyenv local 3.11.4-atcoder && pip install -r ~/algorithm/requirements.txt
+    creates: "{{ ansible_env.HOME }}/.pyenv/versions/3.11.4-atcoder"
 - name: Python online-judge-tools
   shell:
     cmd: |
@@ -101,8 +107,8 @@
       eval "$(pyenv init --path)"
       eval "$(pyenv init -)"
       eval "$(pyenv virtualenv-init -)"
-      cd ~/atcoder && pyenv local 3.8.2-atcoder && pip3 install online-judge-tools
-    creates: "{{ ansible_env.HOME }}/.pyenv/versions/3.8.2-atcoder/lib/python3.8/site-packages/onlinejudge"
+      cd ~/atcoder && pyenv local 3.11.4-atcoder && pip3 install -U pip && pip3 install online-judge-tools
+    creates: "{{ ansible_env.HOME }}/.pyenv/versions/3.11.4-atcoder/lib/python3.8/site-packages/onlinejudge"
 - name: atcoder-cli dependency
   package:
     name:
@@ -117,9 +123,9 @@
 - name: C++
   package:
     name:
-      - g++
+      - g++-12
+      - gcc-12
       - gdb
-      - gcc
     state: latest
   become: yes
 - name: nadesiko3
