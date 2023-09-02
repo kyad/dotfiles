@@ -262,6 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
  ;; If there is more than one, they won't work right.
  '(indent-tabs-mode nil)
  '(inhibit-startup-message t)
+ '(inhibit-startup-screen t)
  '(initial-scratch-message "")
  '(line-number-mode t)
  '(menu-bar-mode nil)
