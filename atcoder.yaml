@@ -86,7 +86,7 @@
       eval "$(pyenv init -)"
       eval "$(pyenv virtualenv-init -)"
       cd ~/atcoder && pyenv local pypy3.10-7.3.12-atcoder && pip3 install -U pip && pip3 install online-judge-tools
-    creates: "{{ ansible_env.HOME }}/.pyenv/versions/pypy3.10-7.3.12/envs/pypy3.10-7.3.12-atcoder/site-packages/onlinejudge"
+    creates: "{{ ansible_env.HOME }}/.pyenv/versions/pypy3.10-7.3.12/envs/pypy3.10-7.3.12-atcoder/bin/oj"
 - name: Python3
   shell:
     cmd: |
@@ -108,7 +108,7 @@
       eval "$(pyenv init -)"
       eval "$(pyenv virtualenv-init -)"
       cd ~/atcoder && pyenv local 3.11.4-atcoder && pip3 install -U pip && pip3 install online-judge-tools
-    creates: "{{ ansible_env.HOME }}/.pyenv/versions/3.11.4-atcoder/lib/python3.8/site-packages/onlinejudge"
+    creates: "{{ ansible_env.HOME }}/.pyenv/versions/3.11.4-atcoder/lib/python3.11/site-packages/onlinejudge"
 - name: atcoder-cli dependency
   package:
     name:
