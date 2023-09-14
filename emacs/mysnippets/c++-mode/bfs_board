@@ -1,0 +1,32 @@
+# -*- mode: snippet -*-
+# name: bfs_board
+# key: bfs_board
+# --
+// BFS
+const int dy[4] = { 0, -1,  0, +1};
+const int dx[4] = {+1,  0, -1,  0};
+queue<pair<int, int> > todo;
+vector<vector<int> > dist(H, vector<int>(W, -1));
+dist.at(sy).at(sx) = 0;
+todo.push(make_pair(sy, sx));
+while (!todo.empty()) {
+  auto [y, x] = todo.front();
+  todo.pop();
+  for (int k = 0; k < 4; k++) {
+    int ny = y + dy[k];
+    int nx = x + dx[k];
+    if (ny < 0 || ny >= H || nx < 0 || nx >= W) {
+      continue;
+    }
+#if 0
+    // 壁の条件
+    if (S[ny][nx] == '#') {
+      continue;
+    }
+#endif
+    if (dist.at(ny).at(nx) < 0) {
+      dist.at(ny).at(nx) = dist.at(y).at(x) + 1;
+      todo.push(make_pair(ny, nx));
+    }
+  }
+}
