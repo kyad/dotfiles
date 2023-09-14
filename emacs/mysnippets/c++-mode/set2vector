@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: set2vector
+# key: set2vector
+# --
+template<class T> vector<T> set2vector(const set<T> &s) {
+  vector<T> v;
+  for (typename set<T>::iterator it = s.begin(); it != s.end(); it++) {
+    v.push_back(*it);
+  }
+  return v;
+}

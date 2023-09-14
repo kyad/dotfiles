@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: lcm
+# key: lcm
+# --
+/**
+ * 最小公倍数を計算する。
+ * 計算量はO(log(a))
+ * 制約: a > 0, b > 0
+ */
+template<class T> T lcm(T a, T b) {
+  return a / __gcd(a, b) * b;
+}
