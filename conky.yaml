@@ -4,3 +4,12 @@
       - conky-all
     state: latest
   become: yes
+- name: Make ~/.config/conky
+  file:
+    path: "{{ ansible_env.HOME }}/.config/conky"
+    state: directory
+- name: Make symbolic link for ~/.config/conky/conky.conf
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/conky.conf"
+    dest: "{{ ansible_env.HOME }}/.config/conky/conky.conf"
+    state: link
