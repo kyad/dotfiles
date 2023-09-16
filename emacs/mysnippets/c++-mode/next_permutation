@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: next_permutation
+# key: next_permutation
+# --
+vector<int> P(N, -1);
+for (int i = 0; i < N; i++) {
+  P.at(i) = i;
+}
+do {
+  for (int i = 0; i < N; i++) {
+    int p = P.at(i);
+    $0
+  }
+} while (next_permutation(P.begin(), P.end()));
