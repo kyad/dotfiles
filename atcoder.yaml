@@ -99,6 +99,12 @@
       pyenv virtualenv 3.11.4 3.11.4-atcoder
       cd ~/atcoder && pyenv local 3.11.4-atcoder && pip install -r ~/algorithm/requirements.txt
     creates: "{{ ansible_env.HOME }}/.pyenv/versions/3.11.4-atcoder"
+- name: Python online-judge-tools dependency
+  package:
+    name:
+      - cargo
+    state: latest
+  become: yes
 - name: Python online-judge-tools
   shell:
     cmd: |
