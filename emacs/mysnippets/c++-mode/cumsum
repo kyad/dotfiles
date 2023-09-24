@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: cumsum
+# key: cumsum
+# --
+/**
+ * AをAの累積和に置き換える。
+ * 計算量はO(N)
+ */
+template<class T> void cumsum(vector<T>& A) {
+  int N = A.size();
+  for (int i = 1; i < N; i++) {
+    A[i] += A[i - 1];
+  }
+}
