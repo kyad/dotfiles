@@ -10,6 +10,7 @@ using namespace std;
 
 void testcase() {
   $0
+  cout << ans << endl;
 }
 
 int main() {
