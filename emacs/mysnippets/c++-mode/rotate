@@ -1,0 +1,25 @@
+# -*- mode: snippet -*-
+# name: rotate
+# key: rotate
+# --
+/**
+ * Sを反時計回りに回転する
+ * 計算量: O(HW)
+ */
+vector<string> rotate(vector<string> const& S) {
+  int H = S.size();
+  if (H == 0) {
+    vector<string> ans(0);
+    return ans;
+  }
+  int W = S[0].size();
+  vector<string> ans(W, string(H, '_'));
+  for (int y = 0; y < H; y++) {
+    for (int x = 0; x < W; x++) {
+      int nx = y;
+      int ny = W - 1 - x;
+      ans.at(ny).at(nx) = S.at(y).at(x);
+    }
+  }
+  return ans;
+}

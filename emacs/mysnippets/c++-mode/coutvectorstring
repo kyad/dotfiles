@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: coutvectorstring
+# key: coutvectorstring
+# --
+/** stringの配列用のデバッグ用関数 */
+ostream& operator<<(ostream& os, const vector<string> &v) {
+  int y0 = 0;
+  int y1 = (int)v.size() - 1;
+  for (int i = y0; i <= y1; i++) {
+    os << '\n'<<v[i];
+  }
+  return os;
+}

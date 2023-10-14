@@ -1,0 +1,44 @@
+# -*- mode: snippet -*-
+# name: trim
+# key: trim
+# --
+/**
+ * Sのうち、emptyでない余白を除いて返す
+ * 計算量: O(HW)
+ */
+vector<string> trim(vector<string> const& S, char empty = '.') {
+  int H = S.size();
+  if (H == 0) {
+    vector<string> ans(0);
+    return ans;
+  }
+  int W = S[0].size();
+  // emptyでない最大・最小のxを見つける
+  int miny = H;
+  int maxy = -1;
+  int minx = W;
+  int maxx = -1;
+  for (int y = 0; y < H; y++) {
+    for (int x = 0; x < W; x++) {
+      if (S[y][x] != empty) {
+        miny = min(miny, y);
+        maxy = max(maxy, y);
+        minx = min(minx, x);
+        maxx = max(maxx, x);
+      }
+    }
+  }
+  int nh = 0;
+  int nw = 0;
+  if (miny < H) {
+    nh = maxy - miny + 1;
+    nw = maxx - minx + 1;
+  }
+  vector<string> ans(nh, string(nw, '_'));
+  for (int y = 0; y < nh; y++) {
+    for (int x = 0; x < nw; x++) {
+      ans.at(y).at(x) = S.at(miny + y).at(minx + x);
+    }
+  }
+  return ans;
+}

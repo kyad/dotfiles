@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: find
+# key: find
+# --
+/** 指定した値と等しくなる最初のイテレータを返す。見つからなければend()を返す。 */
+find(${1:A}.begin(), $1.end(), ${2:x});

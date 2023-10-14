@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# name: extend
+# key: extend
+# --
+/**
+ * SをH*Wに拡大し、足りない所はemptyで埋める
+ * 計算量: O(HW)
+ */
+vector<string> extend(vector<string> const& S, int H, int W, char empty = '.') {
+  vector<string> ans(H, string(W, empty));
+  int ph = S.size();
+  if (ph == 0) {
+    return ans;
+  }
+  int pw = S[0].size();
+  for (int y = 0; y < ph; y++) {
+    for (int x = 0; x < pw; x++) {
+      ans.at(y).at(x) = S.at(y).at(x);
+    }
+  }
+  return ans;
+}
