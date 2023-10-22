@@ -137,21 +137,12 @@
   :custom ((ivy-prescient-retain-classic-highlighting . t))
   :global-minor-mode t)
 
-(leaf flycheck
-  :doc "On-the-fly syntax checking"
-  :req "dash-2.12.1" "pkg-info-0.4" "let-alist-1.0.4" "seq-1.11" "emacs-24.3"
-  :url "http://www.flycheck.org"
-  :emacs>= 24.3
-  :ensure t
-  :bind (("M-n" . flycheck-next-error)
-         ("M-p" . flycheck-previous-error))
-  :global-minor-mode global-flycheck-mode)
-
 (leaf yasnippet
   :ensure t
   :init (yas-global-mode 1)
   :bind ((yas-minor-mode-map
           ("C-x i i" . yas-insert-snippet)
+          ("C-x i l" . yas-describe-tables)
           ("C-x i n" . yas-new-snippet)
           ("C-x i v" . yas-visit-snippet-file)))
   :custom
@@ -249,6 +240,25 @@ document.addEventListener('DOMContentLoaded', () => {
   :config
   (persistent-scratch-setup-default))
 
+;; sudo apt install clangd
+;; sudo apt install python3-pip python-is-python3
+;; pip install python-lsp-server[all]
+(leaf eglot
+  :ensure t
+  :hook
+  (c++-mode-hook . eglot-ensure)
+  (python-mode-hook . eglot-ensure)
+  :config
+  (add-to-list 'eglot-server-programs
+               '(python-mode "~/.local/bin/pylsp")))
+
+;; eglotのflymakeでメッセージをカーソル位置に出す
+(leaf flymake-diagnostic-at-point
+  :ensure t
+  :after flymake
+  :hook (flymake-mode-hook . flymake-diagnostic-at-point-mode)
+  :custom ((flymake-diagnostic-at-point-timer-delay . 0)))
+
 (if (boundp 'window-system)
     (if (>= (x-display-pixel-height) 1440)
         (set-face-font 'default "migu 1m-12")  ;; >=WQHD
@@ -260,6 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-message t)
  '(inhibit-startup-screen t)
