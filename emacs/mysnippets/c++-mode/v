@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: v
+# key: v
+# --
+vector<${2:int}> ${1:dp}(${3:N}, ${4:0});

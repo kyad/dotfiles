@@ -3,11 +3,16 @@
 # key: main
 # expand-env: ((yas-indent-line 'fixed))
 # --
+import sys
+sys.set_int_max_str_digits(0)
+
+
 def main():
     $0A = int(input())
     A, B = map(int, input().split())
     N, M = map(int, input().split())
     print()
+
 
 if __name__ == "__main__":
     main()

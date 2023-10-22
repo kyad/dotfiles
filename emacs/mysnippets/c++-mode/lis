@@ -29,3 +29,6 @@ template<class T> pair<vector<int>, vector<T> > lis(const vector<T>& X) {
   }
   return make_pair(len, value);
 }
+
+//  auto [len, value] = lis(v);
+//  int ans = *max_element(len.begin(), len.end());

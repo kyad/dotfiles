@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: beginend
+# key: beginend
+# --
+${1:A}.begin(), $1.end()$0

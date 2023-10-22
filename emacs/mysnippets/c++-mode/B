@@ -2,7 +2,7 @@
 # name: B
 # key: B
 # --
-vector<int> B(N);
+vector<${2:int}> ${1:B}(N);
 for (int n = 0; n < N; n++) {
-  cin >> B.at(n);
+  cin >> $1.at(n);
 }

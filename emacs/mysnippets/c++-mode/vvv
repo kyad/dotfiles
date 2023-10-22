@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: vvv
+# key: vvv
+# --
+vector<vector<vector<${2:int}> > > ${1:dp}(${3:N}, vector<vector<$2> >(${3:N}, vector<$2>(${4:N}, ${5:0})));

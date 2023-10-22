@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# name: coutvectorvector
+# key: coutvectorvector
+# --
+// 2d-matrix
+template<class T> ostream& operator<<(ostream& os, const vector<vector<T> > &v) {
+  int y0 = 0;
+  int y1 = (int)v.size() - 1;
+  for (int i = y0; i <= y1; i++) {
+    os << (i == 0 ? "[[" : " [");
+    int x0 = 0;
+    int x1 = (int)v[i].size() - 1;
+    for (int j = x0; j <= x1; j++) {
+      os << v[i][j];
+      if (j != x1) {
+        os << ' ';
+      }
+    }
+    os << (i == y1 ? "]]" : "]\n");
+  }
+  return os;
+}
