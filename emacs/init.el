@@ -71,6 +71,10 @@
   (leaf use-package
     :ensure t))
 
+(leaf autorevert
+  :custom ((auto-revert-interval . 1))
+  :global-minor-mode global-auto-revert-mode)
+
 (leaf paren
   :doc "highlight matching paren"
   :tag "builtin"
