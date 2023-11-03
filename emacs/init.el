@@ -71,6 +71,10 @@
   (leaf use-package
     :ensure t))
 
+;; sudo apt install silversearcher-ag  # ag, counsel-ag
+(leaf ag
+  :ensure t)
+
 (leaf autorevert
   :custom ((auto-revert-interval . 1))
   :global-minor-mode global-auto-revert-mode)
@@ -111,6 +115,7 @@
     :ensure t
     :blackout t
     :bind (("C-S-s" . counsel-imenu)  ;; バッファの代表的な行(関数宣言など)を一覧する
+           ("C-M-S-s" . counsel-ag)
            ("C-x C-r" . counsel-recentf))  ;; 最近開いたファイルを一覧する
     :custom `((counsel-yank-pop-separator . "\n----------\n")
               (counsel-find-file-ignore-regexp . ,(rx-to-string '(or "./" "../") 'no-group)))
