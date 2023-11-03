@@ -100,6 +100,9 @@
            )
   :global-minor-mode t
   :config
+  (leaf swiper
+    :ensure t
+    :bind (("C-M-s" . swiper)))
   (leaf counsel
     :doc "Various completion functions using Ivy"
     :req "emacs-24.5" "swiper-0.13.0"
