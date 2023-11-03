@@ -75,6 +75,10 @@
   :custom ((auto-revert-interval . 1))
   :global-minor-mode global-auto-revert-mode)
 
+(leaf recentf
+  :ensure t
+  :init (recentf-mode 1))
+
 (leaf paren
   :doc "highlight matching paren"
   :tag "builtin"
