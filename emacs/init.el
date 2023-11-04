@@ -182,37 +182,6 @@
            (dired-recursive-copies . 'always)
            (dired-isearch-filenames . t)))
 
-; sudo apt install ruby-dev ruby-rubygems
-; sudo gem install github-markup commonmarker
-(leaf markdown-mode
-  :ensure t
-  :commands (markdown-mode gfm-mode)
-  :mode (("\\.md\\'" . gfm-mode))
-  :config
-  (setq
-   markdown-command "github-markup"
-   markdown-command-needs-filename t
-   markdown-content-type "application/xhtml+xml"
-   markdown-css-paths '("https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css")
-   markdown-enable-math t
-   markdown-preview-javascript "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"
-   markdown-xhtml-header-content "
-<style>
-body {
-  box-sizing: border-box;
-  max-width: 740px;
-  width: 100%;
-  margin: 40px auto;
-  padding: 0 10px;
-}
-</style>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.classList.add('markdown-body');
-});
-</script>
-" ))
-
 ;; echo 'Emacs*useXIM: false' >> ~/.Xresources
 (unless (locate-library "skk")
   (package-install 'ddskk t))
@@ -281,7 +250,18 @@ document.addEventListener('DOMContentLoaded', () => {
   :init
   (global-company-mode)
   :custom
-  ((company-selection-default . nil)
+  ((company-backends . `(
+                         company-bbdb
+                         company-semantic
+                         company-cmake
+                         ;company-capf
+                         ;company-clang
+                         company-files
+                         (company-dabbrev-code company-gtags company-etags company-keywords)
+                         company-oddmuse
+                         company-dabbrev))
+   (company-idle-delay . 3)
+   (company-selection-default . nil)
    (company-transformers . nil))  ;; 辞書順
   :config
   ;; yasnippetとの連携 https://github.com/keicy/.emacs.d/issues/75
@@ -301,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
     (if (>= (x-display-pixel-height) 1440)
         (set-face-font 'default "migu 1m-12")  ;; >=WQHD
         (set-face-font 'default "migu 1m-10")))  ;; <=FHD
-(setq compile-command "g++ -g3 -O0 -I ${HOME}/ac-library -Wall a.cc")
+(setq compile-command "g++-12 -std=gnu++2b -O0 -g0 -Wall -Wextra -I${HOME}/ac-library a.cc")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
