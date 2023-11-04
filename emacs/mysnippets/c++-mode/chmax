@@ -2,4 +2,4 @@
 # name: chmax
 # key: chmax
 # --
-template<class T> void chmax(T& a, const T b) { a = max(a, b); }
+template<class T> bool chmax(T& a, const T b) { if (b > a) { a = b; return true; } else { return false; } }  // 更新した時にtrueを返す
