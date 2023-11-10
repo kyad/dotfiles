@@ -280,10 +280,10 @@
 (if (and (display-graphic-p) (boundp 'window-system))
     (cond
      ((>= (x-display-pixel-height) 1440)  ;; >=WQHD
-      (set-face-font 'default "migu 1m-12"))
+      (set-face-font 'default "HackGen Console NF-12")  ;; >=WQHD
      ((>= (x-display-pixel-height) 1080)  ;; >=FHD
       (progn  ;; <=FHD
-        (set-face-font 'default "migu 1m-10")
+        (set-face-font 'default "HackGen Console NF-10")))  ;; <=FHD
         (add-to-list 'default-frame-alist '(width . 100))
         (add-to-list 'default-frame-alist '(height . 60))
         (add-to-list 'default-frame-alist '(left . 1000))
