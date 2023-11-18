@@ -47,5 +47,5 @@
       unzip HackGen_NF_v2.9.0.zip
       mv HackGen_NF_v2.9.0 "{{ ansible_env.HOME }}/.local/share/fonts/HackGen_NF"
       rm HackGen_NF_v2.9.0.zip
-     fc-cache -vf
+      fc-cache -vf
     creates: "{{ ansible_env.HOME }}/.local/share/fonts/HackGen_NF"
