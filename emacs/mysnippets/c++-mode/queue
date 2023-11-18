@@ -1,0 +1,28 @@
+# -*- mode: snippet -*-
+# name: queue
+# key: queue
+# --
+#include <queue>
+
+queue<int> q;
+q.push(x)  // O(1)
+q.pop()  // O(1)
+q.front()  // O(1)
+q.size()  // O(1)
+q.empty()  // O(1)
+
+deque<int> q;
+q.push_front(x), q.push_back(x)  // O(1)  先頭・末尾に追加
+q.front(), q.back()  // O(1)  先頭・末尾にアクセス
+q.pop_front(), q.pop_back()  // O(1)  先頭・末尾の削除
+q[i], q.at(i)  // O(1)
+q.size()  // O(1)
+q.empty()  // O(1)
+
+priority_queue<int> pq;  // 大きい要素がtop
+priority_queue<int, vector<int>, greater<int> > pq;  // 小さい要素がtop
+pq.push(x); //  O(logN)
+pq.pop();  // O(logN)
+pq.top()  //O(1)
+pq.size()  // O(1)
+pq.empty()

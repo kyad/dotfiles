@@ -1,0 +1,27 @@
+# -*- mode: snippet -*-
+# name: set
+# key: set
+# --
+// multisetを使うべきかどうか確認!!
+set<int> st;
+st.insert(x)  // O(logN)
+st.erase(x)  // O(logN) stも変化するのでstでループを回してはいけない
+st.erase(it) //  O(logN)
+st.count(x)  // O(logN) 所属判定
+st.size(x)  // O(1)
+st.lower_bound(x) //x以上の最小の要素のイテレータを返す
+st.clear()  // O(N)
+it++, it—  // 1つ大きい・小さい要素を返す。移動回数NでO(N)
+st.begin(), st.end()/st.rbegin()  // O(1) 最小値、最大値
+// 全部ソートするだけなら、vectorに入れてsortする方が速い https://xoinu.hatenablog.com/entry/2014/08/14/105740
+// イテレータ進める・減らす：O(1) https://atcoder.jp/contests/apg4b/tasks/APG4b_ai
+// distanceはO(N)
+
+multiset<int> ms;  // 重複を許す
+ms.erase(x)  // xをすべて削除
+ms.erase(ms.find(x))  // xを1つだけ削除
+
+// unordered_mapは、pair, tuple等、hashが無いものには適用できない
+unordered_set<int> st;  // 最大値・最小値を取り出せない。ループの順序が不定
+st.insert(x), st.erase(x), st.at[x], st.count(x)  // 平均O(1)
+st.size()  // O(1)

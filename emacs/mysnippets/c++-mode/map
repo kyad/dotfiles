@@ -1,0 +1,21 @@
+# -*- mode: snippet -*-
+# name: map
+# key: map
+# --
+// map
+#include <map>
+map<int, int> mp;
+mp.at(x)  // O(logN)
+mp[x]  //O(logN) xがなければ初期値0で追加
+mp.erace(x)  // O(logN)
+mp.contains(x) // O(logN) 所属判定
+mp.count(x)  // O(logN)  所属判定
+mp.size()  // O(1)
+mp.clear();  // O(N)
+mp.lower_bound(x)  // x以上の最初のイテレータ O(logN) std::lower_boundはO(N)
+mp.upper_bound(x)   // xより大きい最初のイテレータ O(logN) std::lower_boundはO(N)
+// イテレータは小さい順に返す。大きい順に返したいときはreverse_iterator, rbegin(), rend()を使う
+// 連続する区間を表現するのにも使える https://atcoder.jp/contests/abc228/editorial/2944
+// unordered_mapは、pair, tuple等、hashが無いものには適用できない
+// イテレータ進める・減らす：O(1) https://atcoder.jp/contests/apg4b/tasks/APG4b_ai
+// distanceはO(N)

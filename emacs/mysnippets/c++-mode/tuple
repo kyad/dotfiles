@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: tuple
+# key: tuple
+# --
+#include <tuple>
+tuple<int, int, int> a;
+get<i>(a)  // i個目の要素 iは0-indexed
+make_tuple(a1, a2, a3)
+get<0>(a)
+get<1>(a)
+get<2>(a)

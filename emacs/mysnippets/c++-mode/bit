@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: bit
+# key: bit
+# --
+// int
+a | b // OR
+a & b  // AND
+a ^ b  // XOR
+~  // ビット否定
+__builtin_popcount(x)
+
+// long long
+1LL<<n
+__builtin_popcountll(x)
