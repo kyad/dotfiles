@@ -1,0 +1,15 @@
+- name: Install packages
+  package:
+    name:
+      - alacritty
+    state: latest
+  become: yes
+- name: Make ~/.config/alacritty
+  file:
+    path: "{{ ansible_env.HOME }}/.config/alacritty"
+    state: directory
+- name: Make symbolic link for ~/.config/alacritty/alacritty.yml
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/alacritty.yml"
+    dest: "{{ ansible_env.HOME }}/.config/alacritty/alacritty.yml"
+    state: link
