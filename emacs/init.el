@@ -297,6 +297,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
+ '(frame-title-format "%f")
  '(indent-tabs-mode nil)
  '(inhibit-startup-message t)
  '(inhibit-startup-screen t)
