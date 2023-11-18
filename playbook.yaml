@@ -7,6 +7,7 @@
     - include: flatpak.yaml
     - include: docker.yaml
     - include: emacs.yaml
+    - include: alacritty.yaml
     - include: atcoder.yaml
     - include: conky.yaml
     - include: syncthing.yaml
