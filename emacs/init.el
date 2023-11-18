@@ -277,11 +277,19 @@
   (add-hook 'company-mode-hook 'set-yas-as-company-backend)
   )
 
-(if (boundp 'window-system)
-    (if (>= (x-display-pixel-height) 1440)
-        (set-face-font 'default "migu 1m-12")  ;; >=WQHD
-        (set-face-font 'default "migu 1m-10")))  ;; <=FHD
 (setq compile-command "g++-12 -std=gnu++2b -O0 -g0 -Wall -Wextra -I${HOME}/ac-library a.cc")
+(if (and (display-graphic-p) (boundp 'window-system))
+    (cond
+     ((>= (x-display-pixel-height) 1440)  ;; >=WQHD
+      (set-face-font 'default "migu 1m-12"))
+     ((>= (x-display-pixel-height) 1080)  ;; >=FHD
+      (progn  ;; <=FHD
+        (set-face-font 'default "migu 1m-10")
+        (add-to-list 'default-frame-alist '(width . 100))
+        (add-to-list 'default-frame-alist '(height . 60))
+        (add-to-list 'default-frame-alist '(left . 1000))
+        (add-to-list 'default-frame-alist '(top . 0))))
+     nil))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
