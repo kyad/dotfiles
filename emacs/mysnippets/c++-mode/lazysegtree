@@ -5,31 +5,44 @@
 #include <atcoder/lazysegtree>
 using namespace atcoder;
 
+// https://betrue12.hateblo.jp/entry/2020/09/22/194541
+using S = long long;  // 要素
+using F = long long;  // 写像
+S op(S a, S b){ return std::min(a, b); }  // 写像
+S e(){ return INF; }  // 写像の単位元
+S mapping(F f, S x){ return f+x; }  // 写像を要素に適用したものを返す
+F composition(F f, F g){ return f+g; }  // 合成写像を返す。gを先に適用してfを後で適用する。
+F id(){ return 0; }  // 恒等写像
+lazy_segtree<S, op, e, F, mapping, composition, id> seg(A);
+
+
+// チートシート
+// https://betrue12.hateblo.jp/entry/2020/09/23/005940
+
 // 区間加算・区間最小値
 using S = long long;
 using F = long long;
 const S INF = 4e18;
-S op_min(S a, S b){ return std::min(a, b); }
-S e_min(){ return INF; }
+S op(S a, S b){ return std::min(a, b); }
+S e(){ return INF; }
 S mapping(F f, S x){ return f+x; }
 F composition(F f, F g){ return f+g; }
 F id(){ return 0; }
-lazy_segtree<S, op_min, e_min, F, mapping, composition, id> seg_min(B);
+lazy_segtree<S, op, e, F, mapping, composition, id> seg(B);
 
 // 区間加算・区間最大値
 using S = long long;
 using F = long long;
 const S INF = 4e18;
-S op_max(S a, S b){ return std::max(a, b); }
-S e_max(){ return -INF; }
+S op(S a, S b){ return std::max(a, b); }
+S e(){ return -INF; }
 S mapping(F f, S x){ return f+x; }
 F composition(F f, F g){ return f+g; }
 F id(){ return 0; }
-lazy_segtree<S, op_max, e_max, F, mapping, composition, id> seg_max(B);
-seg_max.apply(l, r, value);
-S ans = seg_max.all_prod();
+lazy_segtree<S, op, e, F, mapping, composition, id> seg(B);
+seg.apply(l, r, value);
+S ans = seg.all_prod();
 
-// https://betrue12.hateblo.jp/entry/2020/09/23/005940
 // 区間加算・区間和 (構造体で持つ)
 // 区間変更・区間最大値
 // 区間変更・区間最小値
