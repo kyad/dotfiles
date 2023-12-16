@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: min_element
+# key: min_element
+# --
+min_element(${1:A}.begin(), $1.end());

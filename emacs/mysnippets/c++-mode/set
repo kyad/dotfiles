@@ -8,6 +8,7 @@ st.insert(x)  // O(logN)
 st.erase(x)  // O(logN) stも変化するのでstでループを回してはいけない
 st.erase(it) //  O(logN)
 st.count(x)  // O(logN) 所属判定
+st.contains(a) // O(logN) 所属判定 C++20
 st.size(x)  // O(1)
 st.lower_bound(x) //x以上の最小の要素のイテレータを返す
 st.clear()  // O(N)

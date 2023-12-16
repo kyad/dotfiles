@@ -2,4 +2,4 @@
 # name: sort
 # key: sort
 # --
-sort(${1:}.begin(), $1.end());
+sort(${1:A}.begin(), $1.end());
