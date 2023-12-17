@@ -12,6 +12,7 @@
       - tmux
       - openssh-server
       - psensor
+      - unzip
       - vim
       - whois
     state: latest
