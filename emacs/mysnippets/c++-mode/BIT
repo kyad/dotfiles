@@ -7,68 +7,42 @@ template<class T> struct binary_indexed_tree {
   vector<T> bit;  // 1-indexed
   binary_indexed_tree() {}
   binary_indexed_tree(int n) : N(n) { bit.resize(N + 1, 0); }
-  void resize(int n) {
-    N = n;
-    bit.resize(N + 1, 0);
-  }
-  // Add x to a[k], O(logN)
-  // k: 1-indexed
+  void resize(int n) { N = n; bit.resize(N + 1, 0); }
+  // Add x to a[k], 1-indexed, O(logN)
   void add1(int k, T x) {
     for (; k <= N; k += (k & -k)) {
       bit[k] += x;
     }
   }
-  // Add x to a[k], O(logN)
-  // k: 0-indexed
+  // Add x to a[k], 0-indexed, O(logN)
   void add0(int k, T x) { add1(k + 1, x); }
-  // Returns a[1] + a[2] + ... + a[k], O(logN)
-  // k: 1-indexed
-  T sum1(int k) const {
+  // Returns sum for [0, k], 1-indexed, O(logN)
+  T sum1_closed(int k) const {
     T ret = 0;
     for (; k > 0; k -= (k & -k)) {
       ret += bit[k];
     }
     return ret;
   }
-  // Returns a[l] + a[l + 1] + ... + a[r], O(logN)
-  T sum1(int l, int r) const {
-    if (l == 1) {
-      return sum1(r);
-    } else {
-      return sum1(r) - sum1(l - 1);
-    }
-  }
-  T sum1_open(int l, int r) const {
-    if (l == r) {
-      return 0;
-    } else {
-      return sum1(l, r - 1);
-    }
-  }
-  // Returns a[0] + a[1] + ... + a[k], O(logN)
-  // k: 0-indexed
-  T sum0(int k) const { return sum1(k + 1); }
-  // Returns a[0] + a[1] + ... + a[k - 1], O(logN)
-  // 半開区間の場合は[0, k)が空集合(k==0)の場合にも使え、0を返す。
-  T sum0_open(int k) const {
-    if (k == 0) {
-      return 0;
-    }
-    return sum1(k);
-  }
-  // Returns a[l] + a[l + 1] + ... + a[r], O(logN)
-  T sum0(int l, int r) const { return sum1(l + 1, r + 1); }
-  // Returns a[l] + a[l + 1] + ... + a[r - 1], O(logN)
-  // 半開区間の場合は[l, r)が空集合(l==r)の場合にも使え、0を返す。
-  T sum0_open(int l, int r) const {
-    if (l == r) {
-      return 0;
-    }
-    return sum1(l + 1, r + 1 - 1);
-  }
+  // Returns sum for [l, r], 1-indexed, O(logN)
+  T sum1_closed(int l, int r) const { if (l == 1) { return sum1_closed(r); } else { return sum1_closed(r) - sum1_closed(l - 1); } }
+  // Returns sum for [l, r), 1-indexed, O(logN)
+  T sum1_open(int l, int r) const { if (l == r) { return 0; } else { return sum1_closed(l, r - 1); } }
+  // Returns sum for [0, k], 0-indexed, O(logN)
+  T sum0_closed(int k) const { return sum1_closed(k + 1); }
+  // Returns sum for [0, k), 0-indexed, O(logN). 半開区間の場合は[0, k)が空集合(k==0)の場合にも使え、0を返す。
+  T sum0_open(int k) const { if (k == 0) { return 0; } return sum1_closed(k); }
+  // Returns sum for [l, r], 0-indexed, O(logN)
+  T sum0_closed(int l, int r) const { return sum1_closed(l + 1, r + 1); }
+  // Returns sum for [l, r), 0-indexed, O(logN)
+  T sum0_open(int l, int r) const { if (l == r) { return 0; } return sum1_closed(l + 1, r + 1 - 1); }
   // Returns a[k]
-  T get1(int k) const { return (k == 1) ? sum1(k) : (sum1(k) - sum1(k - 1)); }
+  T get1(int k) const { return (k == 1) ? sum1_closed(k) : (sum1_closed(k) - sum1_closed(k - 1)); }
   T get0(int k) const { return get1(k + 1); }
+  // Update, 1-indexed, O(logN)
+  void update1(int k, T x) { T old = get1(k); add1(k, -old); add1(k, x); }
+  // Update, 0-indexed, O(logN)
+  void update0(int k, T x) { add1(k + 1, x); }
   // Returns minimum x such that a[1] + a[2] + ... + a[x] >= w, O(logN)
   // return: 1-indexed (0: not found)
   T lower_bound1(T w) {
@@ -91,6 +65,9 @@ template<class T> struct binary_indexed_tree {
   }
   // return: 0-indexed (-1: not found)
   T lower_bound0(T w) { return lower_bound1(w) - 1; }
+  // atcoder::fenwick_treeのインタフェースに合わせる
+  void add(int p, T x) { add0(p, x); }
+  T sum(int l, int r) { return sum0_open(l, r); }
 };
 
 template<class X> ostream& operator<<(ostream& os, const binary_indexed_tree<X> &bit) {
@@ -121,3 +98,5 @@ template<class X> ostream& operator<<(ostream& os, const binary_indexed_tree<X> 
 
 // Example
 // binary_indexed_tree<int> bit(N);
+// bit.add(i, x);
+// int sum = bit.sum(l, r);
