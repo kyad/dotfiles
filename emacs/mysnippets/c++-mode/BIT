@@ -65,9 +65,12 @@ template<class T> struct binary_indexed_tree {
   }
   // return: 0-indexed (-1: not found)
   T lower_bound0(T w) { return lower_bound1(w) - 1; }
-  // atcoder::fenwick_treeのインタフェースに合わせる
+  // atcoder::fenwick_treeのインタフェースに似せる
   void add(int p, T x) { add0(p, x); }
   T sum(int l, int r) { return sum0_open(l, r); }
+  T sum(int k) { return sum0_open(k); }
+  T get(int k) const { return get0(k); }
+  void update(int k, T x) { update0(k, x); }
 };
 
 template<class X> ostream& operator<<(ostream& os, const binary_indexed_tree<X> &bit) {
