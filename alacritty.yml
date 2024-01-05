@@ -13,3 +13,9 @@ font:
     style: Bold Italic
 window:
   opacity: 0.85
+shell:
+  program: /usr/bin/bash
+  args:
+    - -c
+    - -l
+    - "/usr/bin/tmux a -t default || tmux new -s default"
