@@ -1,15 +1,15 @@
 font:
   normal:
-    family: HackGen Console NF
+    family: Migu 1M
     style: Regular
   bold:
-    family: HackGen Console NF
+    family: Migu 1M
     style: Bold
   italic:
-    family: HackGen Console NF
+    family: Migu 1M
     style: Italic
   bold_italic:
-    family: HackGen Console NF
+    family: Migu 1M
     style: Bold Italic
 window:
   opacity: 0.85
