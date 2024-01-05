@@ -13,9 +13,16 @@ S e(){ return INF; }  // 写像の単位元
 S mapping(F f, S x){ return f+x; }  // 写像を要素に適用したものを返す
 F composition(F f, F g){ return f+g; }  // 合成写像を返す。gを先に適用してfを後で適用する。
 F id(){ return 0; }  // 恒等写像
-lazy_segtree<S, op, e, F, mapping, composition, id> seg(A);
+// lazy_segtree<S, op, e, F, mapping, composition, id> seg(N);  // eで初期化
+// lazy_segtree<S, op, e, F, mapping, composition, id> seg(A);  // 配列Aで初期化
+// seg.prod(l, r)  // [l, r)にopを適用。l==rの時はe()を返す。r>=Nの時はassertエラー。
+// seg.apply(l, r, f)  // [l, r)にfを適用
 
 
+// 公式ドキュメント
+// https://atcoder.github.io/ac-library/document_ja/lazysegtree.html
+// 実装
+// https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp
 // チートシート
 // https://betrue12.hateblo.jp/entry/2020/09/23/005940
 
@@ -28,7 +35,7 @@ S e(){ return INF; }
 S mapping(F f, S x){ return f+x; }
 F composition(F f, F g){ return f+g; }
 F id(){ return 0; }
-lazy_segtree<S, op, e, F, mapping, composition, id> seg(B);
+lazy_segtree<S, op, e, F, mapping, composition, id> seg(A);
 
 // 区間加算・区間最大値
 using S = long long;
@@ -39,7 +46,7 @@ S e(){ return -INF; }
 S mapping(F f, S x){ return f+x; }
 F composition(F f, F g){ return f+g; }
 F id(){ return 0; }
-lazy_segtree<S, op, e, F, mapping, composition, id> seg(B);
+lazy_segtree<S, op, e, F, mapping, composition, id> seg(A);
 seg.apply(l, r, value);
 S ans = seg.all_prod();
 
@@ -47,3 +54,19 @@ S ans = seg.all_prod();
 // 区間変更・区間最大値
 // 区間変更・区間最小値
 // 区間変更・区間和 (構造体で持つ)
+
+
+void print_lazy_segtree(int N, lazy_segtree<S, op, e, F, mapping, composition, id> &seg) {
+  vector<S> v(N);
+  for (int n = 0; n < N; n++) { v.at(n) = seg.get(n); }
+  cerr << '[';
+  for (int i = 0; i < N; i++) {
+    //cerr << '['<< i << ']=';
+    cerr << v[i];
+    const int MOD = -1;
+    if (i == N - 1) { continue; }
+    else if (MOD > 0 && i % MOD == (MOD - 1)) { cerr << '\n'; }
+    else { cerr << ' '; }
+  }
+  cerr << ']' << endl;
+}
