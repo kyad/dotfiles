@@ -299,7 +299,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
- '(compile-command "g++-12 -std=gnu++2b -O0 -g0 -Wall -Wextra -I${HOME}/ac-library a.cc")
+ '(compile-command "g++-12 -std=gnu++2b -O0 -g3 -Wall -Wextra -I${HOME}/ac-library a.cc")
  '(frame-title-format "%f")
  '(indent-tabs-mode nil)
  '(inhibit-startup-message t)
