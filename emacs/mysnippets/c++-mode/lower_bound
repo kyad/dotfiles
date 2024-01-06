@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: lower_bound
+# key: lower_bound
+# --
+lower_bound(${1:A}.begin(), $1.end(), ${2:x});
+// 初めてx以上になるイテレータを返す。無ければA.end()を返す。
+// A = [1, 2, 3, 5, 8]  x=3→3を示すイテレータ。x=4→5を示すイテレータ。

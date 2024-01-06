@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: upper_bound
+# key: upper_bound
+# --
+upper_bound(${1:A}.begin(), $1.end(), ${2:x});
+// 初めてxより大きくなるイテレータを返す。無ければA.end()を返す。
+// A = [1, 2, 3, 5, 8]  x=3, 4→5を示すイテレータ。
