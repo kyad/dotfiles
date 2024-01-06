@@ -4,6 +4,7 @@
 # --
 #if 1
 // debug
+// mintを使う場合はmintの後に置くこと
 #include <iostream>
 #include <algorithm>
 #include <map>
