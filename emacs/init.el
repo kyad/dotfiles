@@ -280,9 +280,13 @@
 (if (and (display-graphic-p) (boundp 'window-system))
     (cond
      ((>= (x-display-pixel-height) 1440)  ;; >=WQHD
-      (set-face-font 'default "migu 1m-12")
-      ;; (set-face-font 'default "HackGen Console NF-12")
-      )
+      (progn
+        (set-face-font 'default "migu 1m-12")
+        ;; (set-face-font 'default "HackGen Console NF-12")
+        (add-to-list 'default-frame-alist '(width . 150))
+        (add-to-list 'default-frame-alist '(height . 70))
+        (add-to-list 'default-frame-alist '(left . 1300))
+        (add-to-list 'default-frame-alist '(top . 0))))
      ((>= (x-display-pixel-height) 1080)  ;; >=FHD
       (progn
         (set-face-font 'default "migu 1mF-10")
