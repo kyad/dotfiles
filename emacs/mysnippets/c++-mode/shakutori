@@ -2,39 +2,39 @@
 # name: shakutori
 # key: shakutori
 # --
-// 尺取り法。[left, right)は半開区間とする
-int right = 0;
-for (int left = 0; left < N; left++) {
-  // 条件を満たす最大のrightを求める
+// 尺取り法。[l, r)は半開区間とする
+int r = 0;
+for (int l = 0; l < N; l++) {
+  // 条件を満たす最大のrを求める
   while (true) {
-    int nright = right + 1;
-    if (nright >= N + 1) {
+    int nr = r + 1;
+    if (nr >= N + 1) {
       break;
     }
-    // nrightが条件を満たしているかチェック
+    // nrが条件を満たしているかチェック
     // 例：
-    // int nsum = sum + (T[right] == 'x');
+    // int nsum = sum + (T[r] == 'x');
     // if (nsum > K) {
     //   break;
     // }
-    right = nright;
-    // 条件にrightを含める
+    r = nr;
+    // 条件にrを含める
     // 例：
     // sum = nsum;
   }
 
-  // この時点で[left, right)は条件を見たす最大の区間
+  // この時点で[l, r)は条件を見たす最大の区間
   // 何かする。
   // 例：
-  // ans = max(ans, right - left);
+  // ans = max(ans, r - l);
 
-  // leftをインクリメントする前の処理
-  if (left == right) {
-    // このとき、[left, right)は空集合なので、条件からleftを除外する処理は不要
-    right++;  // 先にrightをインクリメントする
+  // lをインクリメントする前の処理
+  if (l == r) {
+    // このとき、[l, r)は空集合なので、条件からlを除外する処理は不要
+    r++;  // 先にrをインクリメントする
   } else {
-    // 条件からleftを除外する
+    // 条件からlを除外する
     // 例：
-    // sum -= (T[left] == 'x');
+    // sum -= (T[l] == 'x');
   }
 }
