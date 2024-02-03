@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: bitlen
+# key: bitlen
+# --
+// Nを2進数で表した時の長さを返す。
+int bitlen(int N) {
+  int ans = 0;
+  while (N > 0) {
+    ans++;
+    N /= 2;
+  }
+  return ans;
+}

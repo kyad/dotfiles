@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: string
+# key: string
+# --
+// #includeは不要
+string T = S;  // コピーコンストラクタ
+s.erase(s.begin() + i);  // i文字目を削除する https://cpprefjp.github.io/reference/string/basic_string/erase.html
+s.empty();  // 空文字列か
+s.substr(pos, n); // s[pos]からn文字の部分文字列
+stoi, stoll, stoull(str, base=10); // stringをlong longに変換する
+to_string(int/longlong); // stringに変換する
+// #include <string>が必要
+p = S.find("hoge", pos);  // pos(0-indexed)から見て最初に見つけた"hoge"の位置を、Sの最初からの0-indexedで返す。見つからない場合はstring::nposを返す
+同じ文字でN文字で初期化 string str(N, 'a')
+S.insert(S.begin(), '0');  // 冒頭に0を挿入する
