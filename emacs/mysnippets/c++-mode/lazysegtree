@@ -16,7 +16,10 @@ F id(){ return 0; }  // 恒等写像
 // lazy_segtree<S, op, e, F, mapping, composition, id> seg(N);  // eで初期化
 // lazy_segtree<S, op, e, F, mapping, composition, id> seg(A);  // 配列Aで初期化
 // seg.prod(l, r)  // [l, r)にopを適用。l==rの時はe()を返す。r>=Nの時はassertエラー。
+// S ans = seg.all_prod();
 // seg.apply(l, r, f)  // [l, r)にfを適用
+// seg.get(i)  // O(logN)
+// seg.set(i, x);  // O(logN)
 
 
 // 公式ドキュメント
@@ -47,10 +50,26 @@ S mapping(F f, S x){ return f+x; }
 F composition(F f, F g){ return f+g; }
 F id(){ return 0; }
 lazy_segtree<S, op, e, F, mapping, composition, id> seg(A);
-seg.apply(l, r, value);
-S ans = seg.all_prod();
 
 // 区間加算・区間和 (構造体で持つ)
+struct S {
+  long long value;
+  int size;  // 1で初期化すること
+};
+using F = long long;
+S op(S a, S b){ return {a.value + b.value, a.size + b.size}; }
+S e(){ return {0, 0};}
+S mapping(F f, S x){ return {x.value + f * x.size, x.size}; }
+F composition(F f, F g){ return f+g; }
+F id(){ return 0; }
+S zero(){ return {0, 1};}  // 0を表現したい時
+vector<S> A(N);
+for (int i = N; i < N; i++) {
+  A.at(i).value = 0;
+  A.at(i).size = 1;  // 1で初期化すること
+}
+lazy_segtree<S, op, e, F, mapping, composition, id> seg(A);
+
 // 区間変更・区間最大値
 // 区間変更・区間最小値
 // 区間変更・区間和 (構造体で持つ)
@@ -63,6 +82,7 @@ void print_lazy_segtree(int N, lazy_segtree<S, op, e, F, mapping, composition, i
   for (int i = 0; i < N; i++) {
     //cerr << '['<< i << ']=';
     cerr << v[i];
+    //cerr << v[i].value;  // 区間和の時
     const int MOD = -1;
     if (i == N - 1) { continue; }
     else if (MOD > 0 && i % MOD == (MOD - 1)) { cerr << '\n'; }
