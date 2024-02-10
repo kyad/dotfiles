@@ -34,7 +34,7 @@ template<class X> struct SegTree {
     }
   }
 
-  // 取得 O(N)
+  // 取得 O(1)
   X get(int i) { return dat[i + n - 1]; }  // 0-indexed
   X get1(int i) { return get(i - 1); }  // 1-indexed
 
