@@ -1,0 +1,20 @@
+# -*- mode: snippet -*-
+# name: argmax
+# key: argmax
+# --
+/**
+ * argmaxを返す。同じ場合はindexの小さい方を返す。A.size() >= 1であること。
+ */
+template<typename T> int argmax(const vector<T> &A) {
+  int N = A.size();
+  assert(N >= 1);
+  int ans = 0;
+  T value = A.at(0);
+  for (int i = 1; i < N; i++) {
+    if (value < A.at(i)) {
+      ans = i;
+      value = A.at(i);
+    }
+  }
+  return ans;
+}
