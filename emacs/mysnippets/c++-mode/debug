@@ -62,5 +62,23 @@ template<class T> ostream& operator<<(ostream& os, const deque<T> &dq) {
   vector<T> v; for (auto it = dq.begin(); it != dq.end(); it++) { v.push_back(*it); } os << v; return os; }
 template<class T> ostream& operator<<(ostream& os, const stack<T> &s) {
   vector<T> v; stack<T> _s(s); while (!_s.empty()) { v.push_back(_s.top()); _s.pop(); } reverse(v.begin(), v.end()); os << v; return os; }
+// 2d-matrix
+template<class T> ostream& operator<<(ostream& os, const vector<vector<T> > &v) {
+  int y0 = 0;
+  int y1 = (int)v.size() - 1;
+  for (int i = y0; i <= y1; i++) {
+    os << (i == 0 ? "[[" : " [");
+    int x0 = 0;
+    int x1 = (int)v[i].size() - 1;
+    for (int j = x0; j <= x1; j++) {
+      os << v[i][j];
+      if (j != x1) {
+        os << ' ';
+      }
+    }
+    os << (i == y1 ? "]]" : "]\n");
+  }
+  return os;
+}
 #endif
 // --------
