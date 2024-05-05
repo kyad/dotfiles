@@ -297,6 +297,12 @@
         (add-to-list 'default-frame-alist '(top . 0))))
      nil))
 
+(leaf web-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist
+               '("\\.ts[x]?\\'" . web-mode)))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
