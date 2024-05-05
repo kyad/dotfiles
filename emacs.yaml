@@ -33,19 +33,7 @@
     name:
       - clangd
       - python3-pip
+      - python3-pylsp
       - python-is-python3
     state: latest
   become: yes
-- name: elgot
-  shell:
-    cmd: pip install python-lsp-server[all]
-    creates: "{{ ansible_env.HOME }}/.local/bin/pylsp"
-- name: hackgen
-  shell:
-    cmd: |
-      wget https://github.com/yuru7/HackGen/releases/download/v2.9.0/HackGen_NF_v2.9.0.zip
-      unzip HackGen_NF_v2.9.0.zip
-      mv HackGen_NF_v2.9.0 "{{ ansible_env.HOME }}/.local/share/fonts/HackGen_NF"
-      rm HackGen_NF_v2.9.0.zip
-      fc-cache -vf
-    creates: "{{ ansible_env.HOME }}/.local/share/fonts/HackGen_NF"

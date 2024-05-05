@@ -3,11 +3,11 @@
   vars:
     user_name: kyad
   tasks:
-    - include: task.yaml
-    - include: flatpak.yaml
-    - include: docker.yaml
-    - include: emacs.yaml
-    - include: alacritty.yaml
-    - include: atcoder.yaml
-    - include: conky.yaml
-    - include: syncthing.yaml
+    - import_tasks: task.yaml
+    - import_tasks: flatpak.yaml
+    - import_tasks: docker.yaml
+    - import_tasks: emacs.yaml
+    - import_tasks: alacritty.yaml
+    - import_tasks: atcoder.yaml
+    - import_tasks: conky.yaml
+    - import_tasks: syncthing.yaml

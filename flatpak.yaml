@@ -1,3 +1,11 @@
+- name: Install flatpak
+  package:
+    name:
+      - flatpak
+      - gnome-software-plugin-flatpak
+    state: latest
+  become: yes
+
 - name: Add flatpak repository
   community.general.flatpak_remote:
     name: flathub
