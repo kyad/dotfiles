@@ -310,9 +310,8 @@
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(compile-command "g++-12 -std=gnu++2b -O0 -g3 -Wall -Wextra -I${HOME}/ac-library a.cc")
- '(frame-title-format "%f")
+ '(frame-title-format "%f" t)
  '(indent-tabs-mode nil)
- '(inhibit-startup-message t)
  '(inhibit-startup-screen t)
  '(initial-scratch-message "")
  '(line-number-mode t)
