@@ -1,0 +1,22 @@
+[font.bold]
+family = "Migu 1M"
+style = "Bold"
+
+[font.bold_italic]
+family = "Migu 1M"
+style = "Bold Italic"
+
+[font.italic]
+family = "Migu 1M"
+style = "Italic"
+
+[font.normal]
+family = "Migu 1M"
+style = "Regular"
+
+[shell]
+args = ["-c", "-l", "/usr/bin/tmux a -t default || tmux new -s default"]
+program = "/usr/bin/bash"
+
+[window]
+opacity = 0.85
