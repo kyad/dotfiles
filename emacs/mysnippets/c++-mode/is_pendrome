@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: is_pendrome
+# key: is_pendrome
+# --
+bool is_pendrome(string &S) {
+  const int N = S.size();
+  for (int i = 0; i < N / 2; i++) {
+    const int j = N - 1 - i;
+    if (S.at(i) != S.at(j)) {
+      return false;
+    }
+  }
+  return true;
+}
