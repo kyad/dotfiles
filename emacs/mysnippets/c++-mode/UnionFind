@@ -5,8 +5,11 @@
 struct UnionFind {
   vector<int> parent, _size;
   int _num_unions;
+  // 追加
 
-  UnionFind(int n) : parent(n, -1), _size(n, 1), _num_unions(n) {}
+  UnionFind(int n) : parent(n, -1), _size(n, 1), _num_unions(n) {
+    // 追加
+  }
 
   int root(int x) {
     if (parent[x] == -1) {
@@ -33,6 +36,9 @@ struct UnionFind {
     parent[y] = x;
     _size[x] += _size[y];
     _num_unions--;
+
+    // 追加
+
     return true;
   }
 
