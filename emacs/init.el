@@ -79,6 +79,17 @@
   :custom ((auto-revert-interval . 1))
   :global-minor-mode global-auto-revert-mode)
 
+(leaf csv-mode
+  :ensure t)
+
+(leaf markdown-mode
+  :ensure t
+  :config
+  (setopt markdown-command '("pandoc" "--from=markdown" "--to=html5"))
+  (setopt markdown-fontify-code-blocks-natively t)
+  (setopt markdown-header-scaling t)
+  (setopt markdown-indent-on-enter 'indent-and-new-item))
+
 (leaf recentf
   :ensure t
   :init (recentf-mode 1))
