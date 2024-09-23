@@ -37,3 +37,23 @@
       - python-is-python3
     state: latest
   become: yes
+- name: Python python-lsp-server[all]
+  shell:
+    cmd: |
+      export PYENV_ROOT="$HOME/.pyenv"
+      export PATH="$PYENV_ROOT/bin:$PATH"
+      eval "$(pyenv init --path)"
+      eval "$(pyenv init -)"
+      eval "$(pyenv virtualenv-init -)"
+      cd ~/atcoder && pyenv local 3.11.4-atcoder && pip3 install -U pip && pip3 install python-lsp-server[all]
+    creates: "{{ ansible_env.HOME }}/.pyenv/versions/3.11.4-atcoder/lib/python3.11/site-packages/pylsp"
+- name: PyPy3 python-lsp-server[all]
+  shell:
+    cmd: |
+      export PYENV_ROOT="$HOME/.pyenv"
+      export PATH="$PYENV_ROOT/bin:$PATH"
+      eval "$(pyenv init --path)"
+      eval "$(pyenv init -)"
+      eval "$(pyenv virtualenv-init -)"
+      cd ~/atcoder && pyenv local pypy3.10-7.3.12-atcoder && pip3 install -U pip && pip3 install python-lsp-server[all]
+    creates: "{{ ansible_env.HOME }}/.pyenv/versions/pypy3.10-7.3.12/envs/pypy3.10-7.3.12-atcoder/bin/pylsp"

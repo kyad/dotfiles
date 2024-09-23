@@ -225,7 +225,7 @@
   :config
   (persistent-scratch-setup-default))
 
-;; sudo apt install clangd
+;; sudo apt install clangd libstdc++-14-dev
 ;; sudo apt install python3-pip python-is-python3
 ;; pip install python-lsp-server[all]
 (leaf eglot
@@ -235,7 +235,7 @@
   (python-mode-hook . eglot-ensure)
   :config
   (add-to-list 'eglot-server-programs
-               '(python-mode "~/.local/bin/pylsp")))
+               '(python-mode "~/.pyenv/versions/pypy3.10-7.3.12/envs/pypy3.10-7.3.12-atcoder/bin/pylsp")))
 
 ;; eglotのflymakeでメッセージをカーソル位置に出す
 (leaf flymake-diagnostic-at-point
