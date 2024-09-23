@@ -14,9 +14,5 @@ style = "Italic"
 family = "Migu 1M"
 style = "Regular"
 
-[shell]
-args = ["-c", "-l", "/usr/bin/tmux a -t default || tmux new -s default"]
-program = "/usr/bin/bash"
-
 [window]
 opacity = 0.85
