@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: mp2vec
+# key: mp2vec
+# --
+template<typename S, typename T> vector<pair<S, T> > mp2vec(const map<S, T> mp) {
+  vector<pair<S, T> > vec;
+  for (auto [s, t] : mp) {
+    vec.emplace_back(s, t);
+  }
+  return vec;
+}

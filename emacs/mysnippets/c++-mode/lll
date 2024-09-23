@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: lll
+# key: lll
+# --
+using lll = __int128;

@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: vec2mp
+# key: vec2mp
+# --
+template<typename T> map<T, int> vec2mp(const vector<T> &vec) {
+  map<T, int> mp;
+  for (T value : vec) {
+    mp[value]++;
+  }
+  return mp;
+}

@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: mt
+# key: mt
+# --
+#include <random>
+// メルセンヌ・ツイスター
+random_device seed_gen;
+mt19937_64 rnd(seed_gen());
+// const unsigned long long MOD = (1ULL << 61) - 1;
+// unsigned long long r = rnd();
