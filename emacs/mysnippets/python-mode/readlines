@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: readlines
+# key: readlines
+# expand-env: ((yas-indent-line 'fixed))
+# --
+with open(path) as f:
+    l = f.readlines()

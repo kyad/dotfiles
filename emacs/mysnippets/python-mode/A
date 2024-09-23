@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: A
+# key: A
+# --
+${1:A} = list(map(int, input().split()))
