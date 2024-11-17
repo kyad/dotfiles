@@ -3,6 +3,6 @@
 # key: A
 # --
 vector<${2:int}> ${1:A}(N);
-for (int n = 0; n < N; n++) {
-  cin >> $1.at(n);
+for (int i = 0; i < N; i++) {
+  cin >> $1.at(i);
 }
