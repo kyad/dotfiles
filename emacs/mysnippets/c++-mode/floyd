@@ -16,6 +16,7 @@
  *     dist[i][j] = iからjへの距離
  *   }
  * }
+ * floyd(dist);
  */
 const long long INF = 4e18;
 void floyd(vector<vector<long long> > &dist) {
