@@ -14,5 +14,10 @@ style = "Italic"
 family = "Migu 1M"
 style = "Regular"
 
+[mouse]
+bindings = [
+{mouse="Right", action="Paste"},
+]
+
 [window]
 opacity = 0.85
