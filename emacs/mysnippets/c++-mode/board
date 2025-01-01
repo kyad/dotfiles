@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: board
+# key: board
+# --
+vector<string> S(H);
+for (int y = 0; y < H; y++) {
+  cin >> S.at(y);
+}

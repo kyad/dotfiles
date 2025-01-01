@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: ifny
+# key: ifny
+# --
+if (ny < 0 || ny >= H || nx < 0 || nx >= W || S.at(ny).at(nx) != '.') {
+  continue;
+}
