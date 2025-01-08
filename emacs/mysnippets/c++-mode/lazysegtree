@@ -71,6 +71,16 @@ for (int i = N; i < N; i++) {
 lazy_segtree<S, op, e, F, mapping, composition, id> seg(A);
 
 // 区間変更・区間最大値
+using S = int;  // 要素
+using F = int;  // 写像
+const S INF = 1e9;
+const F ID = 1e9;  // 取りえない値を設定
+S op(S a, S b){ return std::min(a, b); }  // 写像
+S e(){ return INF; }  // 写像の単位元
+S mapping(F f, S x){ return (f == ID ? x : f); }  // 写像を要素に適用したものを返す
+F composition(F f, F g){ return (f == ID ? g : f); }  // 合成写像を返す。gを先に適用してfを後で適用する。
+F id(){ return ID; }  // 恒等写像
+
 // 区間変更・区間最小値
 // 区間変更・区間和 (構造体で持つ)
 
