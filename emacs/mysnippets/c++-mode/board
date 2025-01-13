@@ -2,7 +2,7 @@
 # name: board
 # key: board
 # --
-vector<string> S(H);
-for (int y = 0; y < H; y++) {
+vector<string> S(${1:H});
+for (int y = 0; y < $1; y++) {
   cin >> S.at(y);
 }
