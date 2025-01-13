@@ -4,6 +4,7 @@
 # --
 // multisetを使うべきかどうか確認!!
 set<int> st;
+set<int, greater<int> > st;  // 大きい順
 st.insert(x)  // O(logN)
 st.erase(x)  // O(logN) stも変化するのでstでループを回してはいけない
 st.erase(it) //  O(logN)
