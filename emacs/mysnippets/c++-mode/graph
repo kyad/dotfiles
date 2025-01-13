@@ -9,6 +9,6 @@ for (int m = 0; m < M; m++) {
   int U, V;
   cin >> U >> V;
   U--; V--;
-  graph[U].push_back(V);
-  //graph[V].push_back(U);
+  graph.at(U).push_back(V);
+  //graph.at(V).push_back(U);
 }
