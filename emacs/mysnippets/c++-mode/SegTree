@@ -102,13 +102,13 @@ template<class X> ostream& operator<<(ostream& os, const SegTree<X> &segtree) {
 
 // // 初期化 i: 0-indexed
 // for (int i = 0; i < N; i++) {
-//   seg.set(i, A[i]);
+//   seg.set(i, A.at(i));
 // }
 // seg.build();  // 構築
 
 // // 更新クエリ O(logN) i: 0-indexed
 // seg.update(i, x);
 // // 取得クエリ O(logN) [l, r), l, r: 0-indexed
-// long long ans = query(l, r);
+// long long ans = seg.query(l, r);
 
 // 区間更新ならlazysegtreeを使う
