@@ -82,12 +82,12 @@
 (leaf csv-mode
   :ensure t)
 
+;; sudo apt install pandoc
 (leaf markdown-mode
   :ensure t
   :config
   (setopt markdown-command '("pandoc" "--from=markdown" "--to=html5"))
   (setopt markdown-fontify-code-blocks-natively t)
-  (setopt markdown-header-scaling t)
   (setopt markdown-indent-on-enter 'indent-and-new-item))
 
 (leaf recentf
@@ -174,11 +174,6 @@
           ("C-x i v" . yas-visit-snippet-file)))
   :custom
   (yas-snippet-dirs . '("~/.emacs.d/mysnippets")))
-
-(leaf beacon
-  :ensure t
-  :init (beacon-mode 1)
-  :custom ((beacon-size . 16)))  ;; dired-modeで改行が入らないようにするため短かくする
 
 (leaf multiple-cursors
   :ensure t
@@ -300,7 +295,7 @@
         (add-to-list 'default-frame-alist '(top . 0))))
      ((>= (x-display-pixel-height) 1080)  ;; >=FHD
       (progn
-        (set-face-font 'default "migu 1mF-10")
+        (set-face-font 'default "migu 1m-10")
         ;; (set-face-font 'default "HackGen Console NF-10")
         (add-to-list 'default-frame-alist '(width . 100))
         (add-to-list 'default-frame-alist '(height . 60))
