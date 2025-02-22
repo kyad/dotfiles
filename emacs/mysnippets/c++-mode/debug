@@ -44,7 +44,13 @@ template<class T> ostream& operator<<(ostream& os, const vector<T> &v) { int MOD
 template<class T> ostream& operator<<(ostream& os, const set<T> &s) {
   vector<T> v; for (typename set<T>::iterator it = s.begin(); it != s.end(); it++) { v.push_back(*it); };
   os << v; return os; }
+template<class T> ostream& operator<<(ostream& os, const set<T, greater<T> > &s) {
+  vector<T> v; for (typename set<T>::iterator it = s.begin(); it != s.end(); it++) { v.push_back(*it); };
+  os << v; return os; }
 template<class T> ostream& operator<<(ostream& os, const multiset<T> &ms) {
+  vector<T> v; for (typename multiset<T>::iterator it = ms.begin(); it != ms.end(); it++) { v.push_back(*it); };
+  os << v; return os; }
+template<class T> ostream& operator<<(ostream& os, const multiset<T, greater<T> > &ms) {
   vector<T> v; for (typename multiset<T>::iterator it = ms.begin(); it != ms.end(); it++) { v.push_back(*it); };
   os << v; return os; }
 template<class T1, class T2> ostream& operator<<(ostream& os, const map<T1, T2> &m) {
