@@ -92,7 +92,8 @@
 
 (leaf recentf
   :ensure t
-  :init (recentf-mode 1))
+  :init (recentf-mode 1)
+  :custom ((recentf-max-saved-items . 1000)))
 
 (leaf paren
   :doc "highlight matching paren"
@@ -208,24 +209,6 @@
   :config
   (add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
 
-(leaf magit
-  :ensure t)
-
-;; M-x all-the-icons-install-fonts
-(leaf all-the-icons
-  :if (display-graphic-p)
-  :ensure t
-  :config
-  (leaf all-the-icons-ivy
-    :ensure t
-    :hook (after-init-hook . all-the-icons-ivy-setup))
-  (leaf all-the-icons-dired
-    :ensure t
-    :hook (dired-mode-hook . all-the-icons-dired-mode)))
-
-(leaf ein
-  :ensure t)
-
 (leaf persistent-scratch
   :ensure t
   :config
@@ -250,39 +233,6 @@
   :hook (flymake-mode-hook . flymake-diagnostic-at-point-mode)
   :custom ((flymake-diagnostic-at-point-timer-delay . 0)))
 
-(leaf company
-  :ensure t
-  :after yasnippet
-  :init
-  (global-company-mode)
-  :custom
-  ((company-backends . `(
-                         company-bbdb
-                         company-semantic
-                         company-cmake
-                         ;company-capf
-                         ;company-clang
-                         company-files
-                         (company-dabbrev-code company-gtags company-etags company-keywords)
-                         company-oddmuse
-                         company-dabbrev))
-   (company-idle-delay . 3)
-   (company-selection-default . nil)
-   (company-transformers . nil))  ;; 辞書順
-  :config
-  ;; yasnippetとの連携 https://github.com/keicy/.emacs.d/issues/75
-  (defvar company-mode/enable-yas t
-    "Enable yasnippet for all backends.")
-  (defun company-mode/backend-with-yas (backend)
-    (if (or (not company-mode/enable-yas) (and (listp backend) (member 'company-yasnippet backend)))
-        backend
-      (append (if (consp backend) backend (list backend))
-              '(:with company-yasnippet))))
-  (defun set-yas-as-company-backend ()
-    (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends)))
-  (add-hook 'company-mode-hook 'set-yas-as-company-backend)
-  )
-
 (if (and (display-graphic-p) (boundp 'window-system))
     (cond
      ((>= (x-display-pixel-height) 1440)  ;; >=WQHD
@@ -302,12 +252,6 @@
         (add-to-list 'default-frame-alist '(left . 1000))
         (add-to-list 'default-frame-alist '(top . 0))))
      nil))
-
-(leaf web-mode
-  :ensure t
-  :config
-  (add-to-list 'auto-mode-alist
-               '("\\.ts[x]?\\'" . web-mode)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
