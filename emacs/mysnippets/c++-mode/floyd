@@ -17,11 +17,30 @@
  *   }
  * }
  * floyd(dist);
+ * dp[i][j](dist[i][j])は、0からkまでを経由する時のiからjへの最短距離
  */
 const long long INF = 4e18;
 void floyd(vector<vector<long long> > &dist) {
   int N = dist.size();
   for (int k = 0; k < N; k++) {
+    for (int i = 0; i < N; i++) {
+      for (int j = 0; j < N; j++) {
+        if (dist[i][k] == INF || dist[k][j] == INF) {  // 負の重み対策
+          continue;
+        }
+        dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
+      }
+    }
+  }
+}
+
+/**
+ * 最短距離を更新する計算において、経由する点がksに限られる時のFloyd-Warshall algorithm
+ * https://atcoder.jp/contests/abc416/editorial/13536
+ */
+void floyd2(vector<vector<long long> > &dist, const vector<int> &ks) {
+  int N = dist.size();
+  for (int k: ks) {
     for (int i = 0; i < N; i++) {
       for (int j = 0; j < N; j++) {
         if (dist[i][k] == INF || dist[k][j] == INF) {  // 負の重み対策
