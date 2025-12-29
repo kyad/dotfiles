@@ -5,7 +5,7 @@
 int N, M;
 cin >> N >> M;
 vector<vector<int> > graph(N);
-for (int m = 0; m < M; m++) {
+for (int j = 0; j < ${1:M}; j++) {
   int U, V;
   cin >> U >> V;
   U--; V--;
