@@ -95,10 +95,14 @@ template<class X> ostream& operator<<(ostream& os, const SegTree<X> &segtree) {
 // 1点更新・区間最小値
 // auto fx = [](int x1, int x2) -> int { return min(x1, x2); };
 // SegTree<int> seg(N, fx, INF);
+// auto fx = [](long long x1, long long x2) -> long long { return min(x1, x2); };
+// SegTree<long long> seg(N, fx, INF);
 
 // 1点更新・区間最大値
 // auto fx = [](int x1, int x2) -> int { return max(x1, x2); };
 // SegTree<int> seg(N, fx, -INF);
+// auto fx = [](long long x1, long long x2) -> long long { return max(x1, x2); };
+// SegTree<long long> seg(N, fx, -INF);
 
 // // 初期化 i: 0-indexed
 // for (int i = 0; i < N; i++) {
