@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# name: runlength
+# key: runlength
+# --
+●(Aを)ランレングス符号化とは
+  答え=[]
+  N=Aの配列要素数
+  もし、Nが0ならば、答えを戻す
+  now=A[0]
+  count=1
+  nを1からNまで1ずつ増やし繰り返す
+    もし、now==A[n]ならば、
+      countを1だけ増やす
+    違えば、
+      答えに[count, now]を配列プッシュ
+      count=1
+      now=A[n]
+    ここまで
+  ここまで
+  もし、count>0ならば、答えに[count, now]を配列プッシュ
+  答えを戻す
+ここまで

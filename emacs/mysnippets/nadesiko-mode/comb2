@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: comb2
+# key: comb2
+# --
+●(Nを)comb2とは
+  N*(N-1)/2を戻す
+ここまで
