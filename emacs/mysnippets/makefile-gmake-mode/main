@@ -15,7 +15,7 @@ all: a.out $(REFERENCE).out
 
 .SUFFIXES: .out .cc
 .cc.out:
-	g++ -g3 -O0 -I ${HOME}/ac-library -Wall $< -o $@
+	g++ -std=gnu++2b -g3 -O0 -I ${HOME}/ac-library -Wall $< -o $@
 
 .PHONY: clean
 clean:
