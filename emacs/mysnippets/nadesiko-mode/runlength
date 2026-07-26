@@ -1,6 +1,7 @@
 # -*- mode: snippet -*-
 # name: runlength
 # key: runlength
+# expand-env: ((yas-indent-line 'fixed))
 # --
 ●(Aを)ランレングス符号化とは
   答え=[]

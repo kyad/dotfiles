@@ -1,6 +1,7 @@
 # -*- mode: snippet -*-
 # name: ceildiv
 # key: ceildiv
+# expand-env: ((yas-indent-line 'fixed))
 # --
 ●(aをbで)floordivとは
 # floor(a / b)を計算する。aが負の場合は負の無限大へ丸める。

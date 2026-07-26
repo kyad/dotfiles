@@ -1,6 +1,7 @@
 # -*- mode: snippet -*-
 # name: graph
 # key: graph
+# expand-env: ((yas-indent-line 'fixed))
 # --
 「」と尋ねて「 」で区切り、入力行に代入
 入力行[0]を整数変換して、Nに代入
