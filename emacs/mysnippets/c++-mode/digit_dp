@@ -1,0 +1,64 @@
+# -*- mode: snippet -*-
+# name: digit_dp
+# key: digit_dp
+# --
+// 求めるものがN以下なら、N未満にする
+// N++;
+
+// Nの桁数と各位の値を求める
+vector<int> S;  // Nを上位桁から見た時の値(1-indexed). 例: N=124 -> S=[0,1,2,4]
+auto digits = [&](long long x, int base = 10) {
+  int d = 0;
+  while (x > 0) {
+    S.push_back(x % base);
+    x /= base;
+    d++;
+  }
+  S.push_back(0);
+  reverse(S.begin(), S.end());
+  return d;
+};
+int D = digits(N);  // Dの桁数. 例: N=124 -> D=3
+
+// 上位桁から決める桁DP
+// dp[i][j][k][l][m]: 求めたいものの個数
+// i: 上位桁からiまで見た(0<=i<=D)
+// j: i番目にjを置く(0<=j<=9)
+// k: 条件値
+// l: 未満フラグ。l=1ならばN未満が確定
+// m: leading_zero。m=1ならば0以外を使っている
+vector<vector<vector<vector<vector<long long>>>>> dp(D + 1, vector<vector<vector<vector<long long>>>>(10,  vector<vector<vector<long long>>>(K + 1, vector<vector<long long>>(2, vector<long long>(2, 0)))));
+dp.at(0).at(0).at(0).at(0).at(0) = 1;
+for (int i = 0; i <= D - 1; i++) {  // 配るDP
+  for (int j = 0; j <= 9; j++) {
+    for (int k = 0; k <= K; k++) {
+      for (int l = 0; l < 2; l++) {
+        for (int m = 0; m < 2; m++) {
+          int ni = i + 1;
+          int nj_max = l == 0 ? S.at(ni) : 9;  // i+1の上限は、未満未確定ならS[ni]以下、未満確定なら何でも良い
+          for (int nj = 0; nj <= nj_max; nj++) {
+            // 条件値の遷移
+            // 例
+            // int nk = m == 0 ? 0 : k + abs(j - nj);  // 1桁目の場合、揺れ値は0
+            // if (nk > K) {
+            //   continue;
+            // }
+
+            int nl = (l == 0 && S.at(ni) == nj) ? 0 : 1;  // 未満フラグは、1つ前が未確定かつ次のnjがNのni桁目と同じなら未確定、それ以外は確定
+            int nm = (m == 0 && nj == 0) ? 0 : 1;  // leading_zeroは、1つ前のmが0かつ次のnjが0なら次も0、それ以外は1
+
+            // dpの遷移
+            // 例
+            // dp.at(ni).at(nj).at(nk).at(nl).at(nm) += dp.at(i).at(j).at(k).at(l).at(m);
+          }
+        }
+      }
+    }
+  }
+}
+// 答えの集計
+// 例. N未満をすべて集める場合
+// long long ans = 0;
+// for (int j = 0; j <= 9; j++) {
+//   ans += dp.at(D).at(j).at(K).at(1).at(1);
+// }
