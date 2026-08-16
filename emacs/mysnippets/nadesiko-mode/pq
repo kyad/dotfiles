@@ -1,0 +1,48 @@
+# -*- mode: snippet -*-
+# name: pq
+# key: pq
+# --
+# Priority queue
+HEAP_SZ_MAX=300000
+HEAP=-1をHEAP_SZ_MAXだけ配列要素作成
+HEAP_SZ=0
+
+●(xを)pq_pushとは
+i=HEAP_SZ  # 自分のノード番号
+HEAP_SZを1だけ増やす
+i>0の間
+  p=(i-1-(i-1)%2)/2  # 親
+  #もし、HEAP[p]<=xならば、抜ける  # もう逆転していないなら抜ける  # ★小さい方がtopの場合(未確認)
+  もし、HEAP[p]>=xならば、抜ける  # もう逆転していないなら抜ける  # ★大きい方がtopの場合
+  HEAP[i]=HEAP[p]  # 親のノードの数字を下ろして、自分は上に
+  i=p
+ここまで
+HEAP[i]=x
+ここまで
+
+●pq_topとは
+もし、HEAP_SZが0ならば、「サイズ0に対してpq_topが呼ばれました」のエラー発生
+HEAP[0]を戻す
+ここまで
+
+●pq_popとは
+もし、HEAP_SZが0ならば、「サイズ0に対してpq_popが呼ばれました」のエラー発生
+答え=HEAP[0]
+HEAP_SZを1だけ減らす
+x=HEAP[HEAP_SZ]  # 根に持ってくる値
+i=0
+# 根から下ろしていく
+(i*2+1<HEAP_SZ)の間
+  # 子同士を比較
+  a=i*2+1
+  b=i*2+2
+  #もし、b<HEAP_SZかつHEAP[b]<HEAP[a]ならば、a=b  # ★小さい方がtopの場合(未確認)
+  もし、b<HEAP_SZかつHEAP[b]>HEAP[a]ならば、a=b  # ★大きい方がtopの場合
+  #もし、HEAP[a]>=xならば、抜ける  # もう逆転していないなら終わり  # ★小さい方がtopの場合(未確認)
+  もし、HEAP[a]<=xならば、抜ける  # もう逆転していないなら終わり  # ★大きい方がtopの場合
+  HEAP[i]=HEAP[a]  # 子の数字を持ち上げる
+  i=a
+ここまで
+HEAP[i]=x
+答えを戻す
+ここまで
