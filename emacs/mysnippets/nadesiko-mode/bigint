@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: bigint
+# key: bigint
+# --
+●(Aを)巨大整数変換とは
+「{A}n」をJS実行。
+ここまで
