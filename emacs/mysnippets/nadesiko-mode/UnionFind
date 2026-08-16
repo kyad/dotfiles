@@ -1,0 +1,49 @@
+# -*- mode: snippet -*-
+# name: UnionFind
+# key: UnionFind
+# expand-env: ((yas-indent-line 'fixed))
+# --
+# Union-Find
+parent = []
+_size = []
+
+●(Nで)UnionFind初期化とは
+  -1をNだけ配列要素作成してparentに代入する。
+  1をNだけ配列要素作成して_sizeに代入する。
+ここまで。
+
+●(xの)rootとは  # x: 0-indexed
+  もし、parent[x]が-1ならば
+    xを戻す。
+  違えば
+    (parent[x]のroot)を答えに代入する。
+    parent[x]=答え。  # 経路圧縮。入れるとO(alpha(N))、入れないとO(log(N))
+    答えを戻す。
+  ここまで。
+ここまで。
+
+●(xとyが)issameとは  # x, y: 0-indexed
+  rxをxのrootに定める。
+  ryをyのrootに定める。
+  答え = (rx == ry)。
+  答えを戻す。
+ここまで。
+
+●(xとyを)uniteとは  # x, y: 0-indexed
+  xのrootをrxに代入する。
+  yのrootをryに代入する。
+  もし、rx == ryならば、いいえを戻す。
+  もし、_size[rx] < _size[ry]ならば、  # Union by size
+    tmp = rx
+    rx = ry
+    ry = tmp
+  ここまで。
+  parent[ry] = rx
+  _size[rx] = _size[rx] + _size[ry]
+  はいを戻す。
+ここまで。
+
+●(xの)sizeとは  # x: 0-indexed
+  xのrootをrxに代入する。
+  _size[rx]を戻す。
+ここまで。
