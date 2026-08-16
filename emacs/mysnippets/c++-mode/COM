@@ -22,6 +22,7 @@ void COMinit() {
 }
 
 // nCk mod p, O(1)
+// COM(0,0)は1を返す
 long long COM(int n, int k) {
   if (n < k) {
     return 0;
