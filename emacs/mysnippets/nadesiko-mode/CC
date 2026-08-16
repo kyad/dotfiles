@@ -1,0 +1,35 @@
+# -*- mode: snippet -*-
+# name: CC
+# key: CC
+# --
+●(Aを)巨大整数変換とは
+「{A}n」をJS実行。
+ここまで
+
+MX=200001  # n (<= 10^7)
+MD=998244353  # p (prime, > n)
+MDn=MDを巨大整数変換
+fac=0をMXだけ配列要素作成  # a! mod p
+finv=0をMXだけ配列要素作成  # (a!)^{-1} mod p
+inv=0をMXだけ配列要素作成  # a^{-1} mod p
+
+# COMinit O(n)
+fac[0]=1n
+fac[1]=1n
+finv[0]=1n
+finv[1]=1n
+inv[1]=1n
+iを2からMX-1まで1ずつ増やし繰り返す
+  ii=iを巨大整数変換
+  fac[i]=(fac[i-1]*ii)%MDn
+  inv[i]=MDn-inv[MD%i]*((MDn-MDn%ii)/ii)%MDn
+  finv[i]=(finv[i-1]*inv[i])%MDn
+ここまで
+
+# nCk mod p, O(1)
+# COM(0,0)は1を返す
+●(nとkを)COMとは
+もし、n<kならば、0nを戻す
+もし、n<0またはk<0ならば、0nを戻す
+((fac[n]*((finv[k]*finv[n - k])%MDn))%MDn)を戻す
+ここまで
