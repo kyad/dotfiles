@@ -3,8 +3,11 @@
 # key: dump
 # --
 /// Dump vector from start. dump(x, 1) for 1-indexed.
-template<typename T> void dump(const vector<T> &x, int start = 0) {
-  for (size_t i = start; i < x.size(); i++) {
-    cout << x.at(i) << (i + 1 == x.size() ? '\n' : ' ');
+template<typename T> void dump(const vector<T> &x, int start = 0, int end = -1) {
+  if (end < 0) {
+    end = x.size();
+  }
+  for (int i = start; i < end; i++) {
+    cout << x.at(i) << (i + 1 == end ? '\n' : ' ');
   }
 }
