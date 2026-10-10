@@ -71,24 +71,9 @@
   (leaf use-package
     :ensure t))
 
-;; sudo apt install silversearcher-ag  # ag, counsel-ag
-(leaf ag
-  :ensure t)
-
 (leaf autorevert
   :custom ((auto-revert-interval . 1))
   :global-minor-mode global-auto-revert-mode)
-
-(leaf csv-mode
-  :ensure t)
-
-;; sudo apt install pandoc
-(leaf markdown-mode
-  :ensure t
-  :config
-  (setopt markdown-command '("pandoc" "--from=markdown" "--to=html5"))
-  (setopt markdown-fontify-code-blocks-natively t)
-  (setopt markdown-indent-on-enter 'indent-and-new-item))
 
 (leaf recentf
   :ensure t
@@ -201,14 +186,6 @@
     :ensure t
     :global-minor-mode t))
 
-;; echo 'lang en_US' >> ~/.aspell.conf
-(leaf ispell
-  :if (file-executable-p "aspell")
-  :custom
-  (ispell-program-name . "aspell")
-  :config
-  (add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
-
 (leaf persistent-scratch
   :ensure t
   :config
@@ -226,19 +203,11 @@
   (add-to-list 'eglot-server-programs
                '(python-mode "~/.pyenv/versions/pypy3.10-7.3.12/envs/pypy3.10-7.3.12-atcoder/bin/pylsp")))
 
-;; eglotのflymakeでメッセージをカーソル位置に出す
-(leaf flymake-diagnostic-at-point
-  :ensure t
-  :after flymake
-  :hook (flymake-mode-hook . flymake-diagnostic-at-point-mode)
-  :custom ((flymake-diagnostic-at-point-timer-delay . 0)))
-
 (if (and (display-graphic-p) (boundp 'window-system))
     (cond
      ((>= (x-display-pixel-height) 1440)  ;; >=WQHD
       (progn
         (set-face-font 'default "migu 1m-12")
-        ;; (set-face-font 'default "HackGen Console NF-12")
         (add-to-list 'default-frame-alist '(width . 150))
         (add-to-list 'default-frame-alist '(height . 70))
         (add-to-list 'default-frame-alist '(left . 1300))
@@ -246,7 +215,6 @@
      ((>= (x-display-pixel-height) 1080)  ;; >=FHD
       (progn
         (set-face-font 'default "migu 1m-10")
-        ;; (set-face-font 'default "HackGen Console NF-10")
         (add-to-list 'default-frame-alist '(width . 100))
         (add-to-list 'default-frame-alist '(height . 60))
         (add-to-list 'default-frame-alist '(left . 1000))
