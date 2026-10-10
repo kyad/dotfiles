@@ -86,69 +86,35 @@
   :custom ((show-paren-delay . 0.1))
   :global-minor-mode show-paren-mode)
 
-(leaf ivy
-  :doc "Incremental Vertical completYon"
-  :req "emacs-24.5"
-  :tag "matching" "emacs>=24.5"
-  :url "https://github.com/abo-abo/swiper"
-  :emacs>= 24.5
+(leaf vertico
   :ensure t
-  :blackout t
-  :leaf-defer nil
-  :custom ((ivy-initial-inputs-alist . nil)
-           (ivy-use-selectable-prompt . t)
-           ;(ivy-sort-functions-alist . 'ivy-prescient-enable-sorting)
-           )
-  :global-minor-mode t
-  :config
-  (leaf swiper
-    :ensure t
-    :bind (("C-M-s" . swiper)))
-  (leaf counsel
-    :doc "Various completion functions using Ivy"
-    :req "emacs-24.5" "swiper-0.13.0"
-    :url "https://github.com/abo-abo/swiper"
-    :emacs>= 24.5
-    :ensure t
-    :blackout t
-    :bind (("C-S-s" . counsel-imenu)  ;; バッファの代表的な行(関数宣言など)を一覧する
-           ("C-M-S-s" . counsel-ag)
-           ("C-x C-r" . counsel-recentf))  ;; 最近開いたファイルを一覧する
-    :custom `((counsel-yank-pop-separator . "\n----------\n")
-              (counsel-find-file-ignore-regexp . ,(rx-to-string '(or "./" "../") 'no-group)))
-    :global-minor-mode t))
+  :custom
+  ;; (vertico-scroll-margin 0) ;; スクロールマージンの変更
+  ;; (vertico-count 20) ;; 表示する補完の数を増やす
+  ;; (vertico-resize t) ;; Verticoミニバッファーの拡大、縮小
+  ;; (vertico-cycle t) ;; `vertico-next/previous'の巡回を有効化
+  :init
+  (vertico-mode))
 
-;; counsel-find-file を使わない
-;; completion-in-region-function も一時的にデフォに戻さないと，TAB補完時に
-;; ivy が有効化されてしまう．
-(defun my-disable-counsel-find-file (&rest args)
-  "Disable `counsel-find-file' and use the original `find-file' with ARGS."
-  (let ((completing-read-function #'completing-read-default)
-        (completion-in-region-function #'completion--in-region))
-    (apply #'read-file-name-default args)))
-(setq read-file-name-function #'my-disable-counsel-find-file)
-;; (counsel-mode 1) を設定しても counsel-find-file が呼ばれないようにする．
-(define-key counsel-mode-map [remap find-file]  nil)
+(use-package consult
+  :ensure t
+  :bind
+  (("C-x C-a" . consult-buffer)            ;; anythingの名残でC-x C-aにバインド
+   ("C-x C-r" . consult-recent-file)
+   ("M-g M-g" . consult-goto-line)         ;; goto-lineをconsult-goto-lineに置き換え
+   ("C-c s" . consult-line)                ;; バッファ内をキーワードで検索
+   ("C-c o" .   consult-outline)))         ;; ファイルのアウトラインになりうる項目へ移動
 
-(leaf prescient
-  :doc "Better sorting and filtering"
-  :req "emacs-25.1"
-  :url "https://github.com/raxod502/prescient.el"
-  :emacs>= 25.1
+(use-package orderless
   :ensure t
-  :custom ((prescient-aggressive-file-save . t)
-           (prescient-filter-method . '(literal-prefix literal regexp initialism)))  ;; compと入力した時にrecompileよりもcompileを先にする
-  :global-minor-mode prescient-persist-mode)
-  
-(leaf ivy-prescient
-  :doc "prescient.el + Ivy"
-  :req "emacs-25.1" "prescient-4.0" "ivy-0.11.0"
-  :url "https://github.com/raxod502/prescient.el"
-  :emacs>= 25.1
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
+
+(leaf marginalia
   :ensure t
-  :after prescient ivy
-  :custom ((ivy-prescient-retain-classic-highlighting . t))
-  :global-minor-mode t)
+  :init
+  (marginalia-mode))
 
 (leaf yasnippet
   :ensure t
