@@ -187,13 +187,15 @@
         (add-to-list 'default-frame-alist '(top . 0))))
      nil))
 
+(add-to-list 'auto-mode-alist '("\\.clay$" . c++-mode))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
- '(compile-command "g++ -std=gnu++2b -O0 -g3 -Wall -Wextra -I${HOME}/ac-library a.cc")
+ '(compile-command
+   "g++ -std=gnu++2b -O0 -g3 -Wall -Wextra -I${HOME}/ac-library a.cc")
  '(frame-title-format "%f" t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
@@ -204,7 +206,9 @@
    '(("gnu" . "https://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")
      ("org" . "https://orgmode.org/elpa/")))
- '(package-selected-packages '(blackout el-get hydra leaf-keywords leaf))
+ '(package-selected-packages
+   '(blackout consult el-get hydra leaf leaf-convert leaf-keywords
+              orderless recentf use-package vertico))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
