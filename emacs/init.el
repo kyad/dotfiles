@@ -86,13 +86,8 @@
   :custom ((show-paren-delay . 0.1))
   :global-minor-mode show-paren-mode)
 
-(leaf vertico
+(use-package vertico
   :ensure t
-  :custom
-  ;; (vertico-scroll-margin 0) ;; スクロールマージンの変更
-  ;; (vertico-count 20) ;; 表示する補完の数を増やす
-  ;; (vertico-resize t) ;; Verticoミニバッファーの拡大、縮小
-  ;; (vertico-cycle t) ;; `vertico-next/previous'の巡回を有効化
   :init
   (vertico-mode))
 
@@ -110,6 +105,17 @@
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
+
+(use-package prescient
+  :ensure t
+  :config
+  (prescient-persist-mode 1))
+
+(use-package vertico-prescient
+  :ensure t
+  :after (vertico prescient)
+  :config
+  (vertico-prescient-mode 1))
 
 (leaf marginalia
   :ensure t
@@ -208,7 +214,7 @@
      ("org" . "https://orgmode.org/elpa/")))
  '(package-selected-packages
    '(blackout consult el-get hydra leaf leaf-convert leaf-keywords
-              orderless recentf use-package vertico))
+              orderless recentf use-package vertico vertico-prescient))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
