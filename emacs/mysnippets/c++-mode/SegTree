@@ -26,8 +26,8 @@ template<class X> struct SegTree {
   SegTree(int n_, FX fx_, X ex_) { init(n_, fx_, ex_); }
 
   // 初期化 O(N) i: 0-indexed
-  void set(int i, X x) { dat[i + n - 1] = x; }  // dat[n-1]~dat[2n-2]に値が入る
-  void set1(int i, X x) { set(i - 1, x); }  // 1-indexed
+  void initial_set(int i, X x) { dat[i + n - 1] = x; }  // dat[n-1]~dat[2n-2]に値が入る
+  void initial_set1(int i, X x) { initial_set(i - 1, x); }  // 1-indexed
   void build() {  // O(logN)
     for (int k = n - 2; k >= 0; k--) {
       dat[k] = fx(dat[2 * k + 1], dat[2 * k + 2]);
@@ -106,9 +106,11 @@ template<class X> ostream& operator<<(ostream& os, const SegTree<X> &segtree) {
 
 // // 初期化 i: 0-indexed
 // for (int i = 0; i < N; i++) {
-//   seg.set(i, A.at(i));
+//   seg.initial_set(i, A.at(i));
 // }
 // seg.build();  // 構築
+
+// ★★更新時にinitial_setを使ってはいけない★★
 
 // // 更新クエリ O(logN) i: 0-indexed
 // seg.update(i, x);
